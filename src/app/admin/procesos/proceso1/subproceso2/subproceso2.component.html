@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-12 p-1">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">
+          Paciente
+        </h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 p-1">
+            <div class="row">
+              <div class="col-12 col-md-4 col-lg-3 p-1">
+                <img class="w-100" [src]="ticket.cliente.Photo" alt="foto paciente">
+              </div>
+              <div class="col-12 col-md-8 col-lg-9 p-1">
+                <div class="row">
+                  <div class="col-12 p-1">
+                    <h4 class="text-center">
+                      {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
+                    </h4>
+                  </div>
+                  <div class="col-12 p-1">
+                    <div class="row">
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.DocumentNumber}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.Email}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.Phone}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.Gender}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.CivilStatus}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{ticket.cliente.Job}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-1">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4 p-1">
+                {{ticket.cliente.BirthDate}}
+              </div>
+              <div class="col-12 col-md-6 col-lg-8 p-1">
+                {{ticket.cliente.Direction}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 p-1">
+    <div class="card-header card-header-primary">
+      <h4 class="card-title">
+        Historial de Hoy
+      </h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 p-1">
+
+        </div>
+        <div class="col-12 p-1"></div>
+        <div class="col-12 p-1"></div>
+        <div class="col-12 p-1"></div>
+        <div class="col-12 p-1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12 col-lg-6 p-1">
+      <h2>Total a Pagar:
+        <br>
+        s/. {{pago}}.00
+      </h2>
+    </div>
+    <div class="col-12 col-lg-6 p-1">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="text-center">
+            Horario Disponible
+          </h4>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  Desde
+                </th>
+                <th>
+                  Hasta
+                </th>
+                <th>  </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of horariofiltrado">
+                <td>
+                  {{obj.hora.Horainicio}}
+                </td>
+                <td>
+                  {{obj.hora.Horafin}}
+                </td>
+                <td>
+                  <button (click)="reservar(obj.id)" type="button" class="btn btn-pill btn-block btn-info">
+                    Reservar
+                  </button>
+                </td>
+                <td>
+                  <button (click)="porpagar(obj.id)" type="button" class="btn btn-pill btn-block btn-info">
+                    Por Pagar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
