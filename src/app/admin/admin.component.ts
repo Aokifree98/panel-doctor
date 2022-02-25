@@ -1,4 +1,3 @@
-import { navItems } from './_nav';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../services/doctor.service';
@@ -10,7 +9,6 @@ import { DoctorService } from '../services/doctor.service';
 })
 export class AdminComponent implements OnInit {
   public sidebarMinimized = false;
-  public navItems = navItems;
   public sidebarColor = 'red';
   client;
   toggleMinimize(e) {

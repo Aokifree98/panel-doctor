@@ -1,66 +1,15 @@
 import { NgModule } from '@angular/core';
 import { AdminComponent } from './admin.component';
 import { Routes, RouterModule } from '@angular/router';
-// admin - usuario --> recontra importante
-import { ListAdminComponent } from './admin/list-admin/list-admin.component';
-import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
-import { UpdateAdminComponent } from './admin/update-admin/update-admin.component';
-// esenciales de la empresa
-// cliente
-import { ListClienteComponent } from './cliente/list-cliente/list-cliente.component';
-import { CreateClienteComponent } from './cliente/create-cliente/create-cliente.component';
-import { UpdateClienteComponent } from './cliente/update-cliente/update-cliente.component';
-// empresa
-import { ViewEmpresaComponent } from './empresa/view-empresa/view-empresa.component';
-import { UpdateEmpresaComponent } from './empresa/update-empresa/update-empresa.component';
-// contacto
-import { ListContactoComponent } from './contacto/list-contacto/list-contacto.component';
-// banner
-import { ListBannerComponent } from './banner/list-banner/list-banner.component';
-import { CreateBannerComponent } from './banner/create-banner/create-banner.component';
-import { UpdateBannerComponent } from './banner/update-banner/update-banner.component';
-// numero
-import { ListNumeroComponent } from './numero/list-numero/list-numero.component';
-import { CreateNumeroComponent } from './numero/create-numero/create-numero.component';
-import { UpdateNumeroComponent } from './numero/update-numero/update-numero.component';
-// objetivo
-import { ListObjetivoComponent } from './objetivo/list-objetivo/list-objetivo.component';
-import { CreateObjetivoComponent } from './objetivo/create-objetivo/create-objetivo.component';
-import { UpdateObjetivoComponent } from './objetivo/update-objetivo/update-objetivo.component';
-// politica
-import { ListPoliticaComponent } from './politica/list-politica/list-politica.component';
-import { CreatePoliticaComponent } from './politica/create-politica/create-politica.component';
-import { UpdatePoliticaComponent } from './politica/update-politica/update-politica.component';
-// valor
-import { ListValorComponent } from './valor/list-valor/list-valor.component';
-import { CreateValorComponent } from './valor/create-valor/create-valor.component';
-import { UpdateValorComponent } from './valor/update-valor/update-valor.component';
-// servicio
-import { ListServicioComponent } from './servicio/list-servicio/list-servicio.component';
-import { UpdateServicioComponent } from './servicio/update-servicio/update-servicio.component';
-import { CreateServicioComponent } from './servicio/create-servicio/create-servicio.component';
-// home
-import { HomeComponent } from './home/home.component';
-// testimonio
-import { ListTestimonioComponent } from './testimonio/list-testimonio/list-testimonio.component';
-import { CreateTestimonioComponent } from './testimonio/create-testimonio/create-testimonio.component';
-import { UpdateTestimonioComponent } from './testimonio/update-testimonio/update-testimonio.component';
-// blog
-import { ListBlogComponent } from './blog/list-blog/list-blog.component';
-import { CreateBlogComponent } from './blog/create-blog/create-blog.component';
-import { UpdateBlogComponent } from './blog/update-blog/update-blog.component';
-// comentario
-import { ListComentarioComponent } from './comentario/list-comentario/list-comentario.component';
-import { UpdateComentarioComponent } from './comentario/update-comentario/update-comentario.component';
-import { ListBlogcomentarioComponent } from './comentario/list-blogcomentario/list-blogcomentario.component';
-// chat
-import { ListChatComponent } from './chat/list-chat/list-chat.component';
-import { AnswerChatComponent } from './chat/answer-chat/answer-chat.component';
-// componentes de la aplicacion
+// doctor - usuario --> recontra importante
 // doctor
 import { ListDoctorComponent } from './doctor/list-doctor/list-doctor.component';
 import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.component';
 import { UpdateDoctorComponent } from './doctor/update-doctor/update-doctor.component';
+// esenciales doctor
+// home
+import { HomeComponent } from './home/home.component';
+// componentes de la aplicacion
 // especialidad
 import { ListEspecialidadComponent } from './especialidad/list-especialidad/list-especialidad.component';
 import { UpdateEspecialidadComponent } from './especialidad/update-especialidad/update-especialidad.component';
@@ -130,57 +79,6 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      {
-        path: 'banner',
-        children: [
-          {
-            path: 'list',
-            component: ListBannerComponent
-          },
-          {
-            path: 'create',
-            component: CreateBannerComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateBannerComponent
-          }
-        ]
-      },
-      {
-        path: 'numero',
-        children: [
-          {
-            path: 'list',
-            component: ListNumeroComponent
-          },
-          {
-            path: 'create',
-            component: CreateNumeroComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateNumeroComponent
-          }
-        ]
-      },
-      {
-        path: 'servicio',
-        children: [
-          {
-            path: 'list',
-            component: ListServicioComponent
-          },
-          {
-            path: 'create',
-            component: CreateServicioComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateServicioComponent
-          }
-        ]
-      },
       {
         path: 'doctor',
         children: [
@@ -348,169 +246,6 @@ const routes: Routes = [
           {
             path: 'update/:id',
             component: UpdateLaboratorioComponent
-          }
-        ]
-      },
-      {
-        path: 'valor',
-        children: [
-          {
-            path: 'list',
-            component: ListValorComponent
-          },
-          {
-            path: 'create',
-            component: CreateValorComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateValorComponent
-          }
-        ]
-      },
-      {
-        path: 'objetivo',
-        children: [
-          {
-            path: 'list',
-            component: ListObjetivoComponent
-          },
-          {
-            path: 'create',
-            component: CreateObjetivoComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateObjetivoComponent
-          }
-        ]
-      },
-      {
-        path: 'politica',
-        children: [
-          {
-            path: 'list',
-            component: ListPoliticaComponent
-          },
-          {
-            path: 'create',
-            component: CreatePoliticaComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdatePoliticaComponent
-          }
-        ]
-      },
-      {
-        path: 'cliente',
-        children: [
-          {
-            path: 'list',
-            component: ListClienteComponent
-          },
-          {
-            path: 'create',
-            component: CreateClienteComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateClienteComponent
-          }
-        ]
-      },
-      {
-        path: 'admin',
-        children: [
-          {
-            path: 'list',
-            component: ListAdminComponent
-          },
-          {
-            path: 'create',
-            component: CreateAdminComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateAdminComponent
-          },
-        ]
-      },
-      {
-        path: 'blog',
-        children: [
-          {
-            path: 'list',
-            component: ListBlogComponent
-          },
-          {
-            path: 'create',
-            component: CreateBlogComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateBlogComponent
-          },
-        ]
-      },
-      {
-        path: 'empresa',
-        children: [
-          {
-            path: 'view',
-            component: ViewEmpresaComponent
-          },
-          {
-            path: 'update',
-            component: UpdateEmpresaComponent
-          },
-        ]
-      },
-      {
-        path: 'testimonio',
-        children: [
-          {
-            path: 'list',
-            component: ListTestimonioComponent
-          },
-          {
-            path: 'create',
-            component: CreateTestimonioComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateTestimonioComponent
-          },
-        ]
-      },
-      {
-        path: 'comentarios',
-        children: [
-          {
-            path: 'listblog',
-            component: ListBlogcomentarioComponent
-          },
-          {
-            path: 'list/:id',
-            component: ListComentarioComponent
-          },
-          {
-            path: 'update/:id',
-            component: UpdateComentarioComponent
-          },
-        ]
-      },
-      {
-        path: 'chat',
-        children: [
-          {
-            path: 'list',
-            component: ListChatComponent,
-            // component: WorkingComponent
-          },
-          {
-            path: 'answer/:id',
-            component: AnswerChatComponent
           }
         ]
       },
