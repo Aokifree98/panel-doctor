@@ -250,15 +250,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'contacto',
-        children: [
-          {
-            path: '',
-            component: ListContactoComponent
-          }
-        ]
-      },
-      {
         path: 'profile',
         children: [
           {

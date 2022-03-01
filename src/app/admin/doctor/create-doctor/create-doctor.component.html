@@ -89,8 +89,8 @@
                 [src]="doctor.Photo">
             </div>
           </div>
-          <button (click)="saveDoctor()"
-          type="submit" class="btn btn-primary pull-right">
+          <button (click)="saveDoctor()" type="submit" class="btn btn-primary pull-right"
+            [disabled]="(doctor.Name === '' ||  doctor.LastName === '' ||  doctor.Photo === '' ||  doctor.Email === '' ||  doctor.MedicalSchoolNumber === '')? true:false">
             Crear
           </button>
           <div class="clearfix"></div>

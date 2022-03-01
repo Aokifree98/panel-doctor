@@ -17,25 +17,27 @@
                 <div class="row">
                   <div class="col-12 p-1">
                     <h4 class="text-center">
-                      {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
+                       Nombres y Apellidos:
+                       <br>
+                       {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
                     </h4>
                   </div>
                   <div class="col-12 p-1">
                     <div class="row">
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        {{ticket.cliente.DocumentNumber}}
+                        Documento: {{ticket.cliente.DocumentNumber}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        {{ticket.cliente.Email}}
+                        Correo: {{ticket.cliente.Email}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        {{ticket.cliente.Phone}}
+                        Celular: {{ticket.cliente.Phone}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        {{ticket.cliente.Gender}}
+                        Genero: {{ticket.cliente.Gender}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        {{ticket.cliente.CivilStatus}}
+                        Estado Civil: {{ticket.cliente.CivilStatus}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
                         {{ticket.cliente.Job}}
@@ -49,9 +51,13 @@
           <div class="col-12 p-1">
             <div class="row">
               <div class="col-12 col-md-6 col-lg-4 p-1">
+                Fecha Nacimiento:
+                <br>
                 {{ticket.cliente.BirthDate}}
               </div>
               <div class="col-12 col-md-6 col-lg-8 p-1">
+                Direccion:
+                <br>
                 {{ticket.cliente.Direction}}
               </div>
             </div>

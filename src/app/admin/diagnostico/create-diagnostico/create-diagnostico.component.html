@@ -37,7 +37,8 @@
               </div>
             </div>
           </div>
-          <button (click)="saveDiagnostico()" type="submit" class="btn btn-primary pull-right">
+          <button (click)="saveDiagnostico()" type="submit" class="btn btn-primary pull-right"
+          [disabled]="(diagnostico.Name === '' ||  diagnostico.Detail === '')? true:false">
             Crear
           </button>
           <div class="clearfix"></div>

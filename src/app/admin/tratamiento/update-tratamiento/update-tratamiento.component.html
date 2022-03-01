@@ -50,7 +50,8 @@
               </div>
             </div>
           </div>
-          <button (click)="updateTratamiento()" type="submit" class="btn btn-primary pull-right">
+          <button (click)="updateTratamiento()" type="submit" class="btn btn-primary pull-right"
+          [disabled]="(tratamiento.Name === '' ||  tratamiento.Price === 0 ||  tratamiento.Detail === '')? true:false">
             Actualizar
           </button>
           <div class="clearfix"></div>

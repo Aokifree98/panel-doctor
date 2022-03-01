@@ -48,7 +48,8 @@
               </div>
             </div>
           </div>
-          <button (click)="updateLaboratorio()" type="submit" class="btn btn-primary pull-right">
+          <button (click)="updateLaboratorio()" type="submit" class="btn btn-primary pull-right"
+          [disabled]="(laboratorio.Name === '' &&  laboratorio.Detail === '' &&  laboratorio.Price === 0)? true:false">
             Actualizar
           </button>
           <div class="clearfix"></div>
