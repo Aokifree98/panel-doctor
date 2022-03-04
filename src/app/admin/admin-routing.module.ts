@@ -72,6 +72,7 @@ import { Subproceso1de5Component } from './procesos/proceso5/subproceso1de5/subp
 import { Subproceso2de5Component } from './procesos/proceso5/subproceso2de5/subproceso2de5.component';
 // confirmacion pago
 import { Subproceso1de6Component } from './procesos/proceso6/subproceso1de6/subproceso1de6.component';
+import { BoletaComponent } from './boleta/boleta.component';
 
 
 const routes: Routes = [
@@ -255,6 +256,15 @@ const routes: Routes = [
           {
             path: '',
             component: HomeComponent
+          }
+        ]
+      },
+      {
+        path: 'boleta',
+        children: [
+          {
+            path: '',
+            component: BoletaComponent
           }
         ]
       },

@@ -1,3 +1,125 @@
+<div class="row">
+  <div class="col-12 p-1">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">
+          Buscar Historia Clinica
+        </h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 p-1">
+            <form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">
+                      Correo o Numero Documento
+                    </label>
+                    <input name="dato"
+                    [(ngModel)]="dato"
+                    type="text" class="form-control"
+                    placeholder="fdasg@fgadsg.sd o 32536243">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <button (click)="searchEmailCliente()"
+                    type="button" class="btn btn-primary"
+                    [disabled]="(dato === '')? true:false">
+                    Por Correo
+                  </button>
+                </div>
+                <div class="col-12 col-md-6">
+                  <button (click)="searchDocCliente()"
+                    type="button" class="btn btn-primary"
+                  [disabled]="(dato === '')? true:false">
+                    Por Documento
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 p-1">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">
+          Paciente
+        </h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 p-1">
+            <div class="row">
+              <div class="col-12 col-md-4 col-lg-3 p-1">
+                <img class="w-100" [src]="cliente.Photo" alt="foto paciente">
+              </div>
+              <div class="col-12 col-md-8 col-lg-9 p-1">
+                <div class="row">
+                  <div class="col-12 p-1">
+                    <h4 class="text-center">
+                       Nombres y Apellidos:
+                       <br>
+                       {{cliente.Name + ' ' + cliente.LastName}}
+                    </h4>
+                  </div>
+                  <div class="col-12 p-1">
+                    <div class="row">
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        Documento: {{cliente.DocumentNumber}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        Correo: {{cliente.Email}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        Celular: {{cliente.Phone}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        Genero: {{cliente.Gender}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        Estado Civil: {{cliente.CivilStatus}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        {{cliente.Job}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-1">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4 p-1">
+                Fecha Nacimiento:
+                <br>
+                {{cliente.BirthDate}}
+              </div>
+              <div class="col-12 col-md-6 col-lg-8 p-1">
+                Direccion:
+                <br>
+                {{cliente.Direction}}
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-1">
+            <button (click)="viewdetails()"
+              type="button" class="btn btn-primary"
+              [disabled]="(cliente === 0)? true:false">
+              Ver Historia Clinica
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- <div class="animated fadeIn">
   <div class="row">
     <div class="col">

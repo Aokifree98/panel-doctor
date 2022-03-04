@@ -103,6 +103,7 @@ import { Subproceso1de5Component } from './procesos/proceso5/subproceso1de5/subp
 import { Subproceso2de5Component } from './procesos/proceso5/subproceso2de5/subproceso2de5.component';
 // confirmacion pago
 import { Subproceso1de6Component } from './procesos/proceso6/subproceso1de6/subproceso1de6.component';
+import { BoletaComponent } from './boleta/boleta.component';
 
 
 @NgModule(
@@ -159,6 +160,7 @@ import { Subproceso1de6Component } from './procesos/proceso6/subproceso1de6/subp
       Subproceso1de5Component,
       Subproceso2de5Component,
       Subproceso1de6Component,
+      BoletaComponent,
     ],
     imports: [
       CommonModule,
