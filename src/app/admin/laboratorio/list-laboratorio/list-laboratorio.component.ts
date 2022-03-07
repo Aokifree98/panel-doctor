@@ -23,6 +23,7 @@ export class ListLaboratorioComponent implements OnInit {
     this.laboratorioService.getLaboratorios().subscribe(
       res => {
         this.laboratorios = res;
+        console.log(res);
       },
       err => console.error(err)
     );
