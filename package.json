@@ -19,7 +19,7 @@
   "copyright": "Copyright 2022 JxDesign",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
