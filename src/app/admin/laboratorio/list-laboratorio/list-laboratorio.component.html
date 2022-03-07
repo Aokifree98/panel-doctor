@@ -25,6 +25,9 @@
                 Precio
               </th>
               <th>
+                Tipo
+              </th>
+              <th>
                 ...
               </th>
             </thead>
@@ -38,6 +41,9 @@
                 </td>
                 <td>
                   {{item.Price}}
+                </td>
+                <td>
+                  {{item.tipo.Name}}
                 </td>
                 <td class="text-primary">
                   <button (click)="editar(item.id)" type="button" class="btn btn-info">
