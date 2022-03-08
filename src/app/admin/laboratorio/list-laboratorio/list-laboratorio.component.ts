@@ -114,5 +114,7 @@ export class ListLaboratorioComponent implements OnInit {
     );
     window.location.reload();
   }
-
+  vitales() {
+    this.toastr.info('Registrando funsiones vitales');
+  }
 }

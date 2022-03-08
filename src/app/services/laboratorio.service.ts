@@ -17,6 +17,10 @@ export class LaboratorioService {
     return this.http.get(`${this.apiUrl}`);
   }
 
+  getLaboratorioTipo(tipo: string) {
+    return this.http.get(`${this.apiUrl}/filtro/${tipo}`);
+  }
+
   getLaboratorio(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
