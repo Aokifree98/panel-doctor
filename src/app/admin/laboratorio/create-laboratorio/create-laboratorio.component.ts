@@ -86,10 +86,6 @@ export class CreateLaboratorioComponent implements OnInit {
     this.tipoService.saveTipo(this.tipo).subscribe(
       res => {
         this.tipo1 = res;
-        console.log(res);
-        this.toastr.info('se creo nuevo tipo');
-        this.bandera = 'elegido';
-        this.laboratorio.TipoId = this.tipo1.id;
       }, err => {
         this.toastr.error('Error Api');
         this.bandera = 'elegido';
