@@ -2,63 +2,80 @@
   <div class="col-12 p-1">
     <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="card-title">
+        <h4 class="card-title text-center">
           Paciente
         </h4>
       </div>
-      <div class="card-body">
+      <div class="card-body p-4">
         <div class="row">
           <div class="col-12 p-1">
-            <div class="row">
+            <div class="row p-4">
               <div class="col-12 col-md-4 col-lg-3 p-1">
-                <img class="w-100" [src]="ticket.cliente.Photo" alt="foto paciente">
+                <img [src]="ticket.cliente.Photo" alt="foto paciente">
               </div>
               <div class="col-12 col-md-8 col-lg-9 p-1">
                 <div class="row">
                   <div class="col-12 p-1">
                     <h4 class="text-center">
-                       Nombres y Apellidos:
-                       <br>
-                       {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
+                      <span>
+                        Nombres y Apellidos:
+                      </span>
+                      {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
                     </h4>
                   </div>
                   <div class="col-12 p-1">
                     <div class="row">
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Documento: {{ticket.cliente.DocumentNumber}}
+                        <span>
+                          DNI:
+                        </span>
+                        {{ticket.cliente.DocumentNumber}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Correo: {{ticket.cliente.Email}}
+                        <span>
+                          Correo:
+                        </span>
+                        {{ticket.cliente.Email}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Celular: {{ticket.cliente.Phone}}
+                        <span>
+                          Celular:
+                        </span>
+                        {{ticket.cliente.Phone}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Genero: {{ticket.cliente.Gender}}
+                        <span>
+                          Genero:
+                        </span>
+                        {{ticket.cliente.Gender}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Estado Civil: {{ticket.cliente.CivilStatus}}
+                        <span>
+                          Estado Civil:
+                        </span>
+                        {{ticket.cliente.CivilStatus}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
+                        <span>
+                          Dedicacion:
+                        </span>
                         {{ticket.cliente.Job}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        <span>
+                          Edad:
+                        </span>
+                        {{ticket.cliente.BirthDate}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-8 p-1">
+                        <span>
+                          Direccion:
+                        </span>
+                        {{ticket.cliente.Direction}}
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 p-1">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-4 p-1">
-                Fecha Nacimiento:
-                <br>
-                {{ticket.cliente.BirthDate}}
-              </div>
-              <div class="col-12 col-md-6 col-lg-8 p-1">
-                Direccion:
-                <br>
-                {{ticket.cliente.Direction}}
               </div>
             </div>
           </div>
@@ -67,75 +84,321 @@
     </div>
   </div>
   <div class="col-12 p-1">
-    <div class="card-header card-header-primary">
-      <h4 class="card-title">
-        Historial de Hoy
-      </h4>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12 p-1">
-
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title text-center">
+          Historial de Hoy
+        </h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-lg-4 p-1">
+            <span>
+              Referido por:
+            </span>
+            {{ticket.Referred}}
+          </div>
+          <div class="col-12 col-lg-4 p-1">
+            <span>
+              Acompaniante:
+            </span>
+            {{ticket.Companion}}
+          </div>
+          <div class="col-12 col-lg-4 p-1">
+            <span>
+              Parentesco:
+            </span>
+            {{ticket.Relationship}}
+          </div>
         </div>
-        <div class="col-12 p-1"></div>
-        <div class="col-12 p-1"></div>
-        <div class="col-12 p-1"></div>
-        <div class="col-12 p-1"></div>
+        <hr>
+        <div class="row justify-content-center">
+          <div class="col-4 col-md-3 col-lg-2">
+            <span>
+              PA:
+            </span>
+            {{ticket.BloodPressure}}
+          </div>
+          <div class="col-4 col-md-3 col-lg-2">
+            <span>
+              FC:
+            </span>
+            {{ticket.HeartRate}}
+          </div>
+          <div class="col-4 col-md-3 col-lg-2">
+            <span>
+              FR:
+            </span>
+            {{ticket.BreathingFrequency}}
+          </div>
+          <div class="col-4 col-md-3 col-lg-2">
+            <span>
+              T:
+            </span>
+            {{ticket.Temperature}}
+          </div>
+          <div class="col-4 col-md-3 col-lg-2">
+            <span>
+              SO2:
+            </span>
+            {{ticket.Saturation}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 p-1">
+            <form>
+              <h2 class="text-center">
+                EPISODIO ACTUAL
+              </h2>
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      TE:
+                    </label>
+                    <input
+                      name="reserva.SickTime"
+                      [(ngModel)]="reserva.SickTime"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      autofocus tabindex="1"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      EA:
+                    </label>
+                    <input
+                      name="reserva.CurrentEpisode"
+                      [(ngModel)]="reserva.CurrentEpisode"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="2"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      FI:
+                    </label>
+                    <input
+                      name="reserva.StartWay"
+                      [(ngModel)]="reserva.StartWay"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="3"
+                      placeholder=".........">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      SS:
+                    </label>
+                    <textarea
+                      name="reserva.SignsandSymptoms"
+                      [(ngModel)]="reserva.SignsandSymptoms"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="4"
+                      placeholder="........."
+                      cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      DESCRIPCIÓN DEL PROBLEMA:
+                    </label>
+                    <textarea
+                      name="reserva.DescriptionProblem"
+                      [(ngModel)]="reserva.DescriptionProblem"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="5"
+                      placeholder="........."
+                      cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!-- <h2 class="text-center">
+                ANTECEDENTES PRINCIPALES
+              </h2>
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      TE:
+                    </label>
+                    <input
+                      name="reserva.SickTime"
+                      [(ngModel)]="reserva.SickTime"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      autofocus tabindex="1"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      EA:
+                    </label>
+                    <input
+                      name="reserva.CurrentEpisode"
+                      [(ngModel)]="reserva.CurrentEpisode"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="2"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      FI:
+                    </label>
+                    <input
+                      name="reserva.StartWay"
+                      [(ngModel)]="reserva.StartWay"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="3"
+                      placeholder=".........">
+                  </div>
+                </div>
+              </div> -->
+              <h2 class="text-center">
+                ANTECEDENTES PRINCIPALES
+              </h2>
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      QX:
+                    </label>
+                    <input
+                      name="reserva.SurgicalHistory"
+                      [(ngModel)]="reserva.SurgicalHistory"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="6"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      MEDICOS:
+                    </label>
+                    <input
+                      name="reserva.MedicalHistory"
+                      [(ngModel)]="reserva.MedicalHistory"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="7"
+                      placeholder=".........">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      ALERGIAS:
+                    </label>
+                    <input
+                      name="reserva.AllergicHistory"
+                      [(ngModel)]="reserva.AllergicHistory"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="8"
+                      placeholder=".........">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      EXAMEN FÍSICO:
+                    </label>
+                    <textarea
+                      name="reserva.PhysicalExam"
+                      [(ngModel)]="reserva.PhysicalExam"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="9"
+                      placeholder="........."
+                      cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      DIAGNOSTICO:
+                    </label>
+                    <textarea
+                      name="reserva.Diagnosis"
+                      [(ngModel)]="reserva.Diagnosis"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="10"
+                      placeholder="........."
+                      cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12 p-2 borde">
+                  <div class="form-group">
+                    <label>
+                      EXAMENES DE LABORATORIO:
+                    </label>
+                    <textarea
+                      name="reserva.LaboratoryExam"
+                      [(ngModel)]="reserva.LaboratoryExam"
+                      type="text"
+                      class="form-control"
+                      required minlength="3"
+                      tabindex="11"
+                      placeholder="........."
+                      cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Registrar
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<!-- <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-12 col-lg-6 p-1">
-      <h2>Total a Pagar:
-        <br>
-        s/. {{pago}}.00
-      </h2>
-    </div>
-    <div class="col-12 col-lg-6 p-1">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="text-center">
-            Horario Disponible
-          </h4>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>
-                  Desde
-                </th>
-                <th>
-                  Hasta
-                </th>
-                <th>  </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let obj of horariofiltrado">
-                <td>
-                  {{obj.hora.Horainicio}}
-                </td>
-                <td>
-                  {{obj.hora.Horafin}}
-                </td>
-                <td>
-                  <button (click)="reservar(obj.id)" type="button" class="btn btn-pill btn-block btn-info">
-                    Reservar
-                  </button>
-                </td>
-                <td>
-                  <button (click)="porpagar(obj.id)" type="button" class="btn btn-pill btn-block btn-info">
-                    Por Pagar
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->

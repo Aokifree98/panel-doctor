@@ -48,45 +48,76 @@
   <div class="col-12 p-1">
     <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="card-title">
+        <h4 class="card-title text-center">
           Paciente
         </h4>
       </div>
       <div class="card-body">
         <div class="row">
           <div class="col-12 p-1">
-            <div class="row">
+            <div class="row p-4">
               <div class="col-12 col-md-4 col-lg-3 p-1">
-                <img class="w-100" [src]="cliente.Photo" alt="foto paciente">
+                <img [src]="cliente.Photo" alt="foto paciente">
               </div>
               <div class="col-12 col-md-8 col-lg-9 p-1">
                 <div class="row">
                   <div class="col-12 p-1">
                     <h4 class="text-center">
-                       Nombres y Apellidos:
-                       <br>
-                       {{cliente.Name + ' ' + cliente.LastName}}
+                      <span>
+                        Nombres y Apellidos:
+                      </span>
+                      {{cliente.Name + ' ' + cliente.LastName}}
                     </h4>
                   </div>
                   <div class="col-12 p-1">
                     <div class="row">
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Documento: {{cliente.DocumentNumber}}
+                        <span>
+                          DNI:
+                        </span>
+                        {{cliente.DocumentNumber}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Correo: {{cliente.Email}}
+                        <span>
+                          Correo:
+                        </span>
+                        {{cliente.Email}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Celular: {{cliente.Phone}}
+                        <span>
+                          Celular:
+                        </span>
+                        {{cliente.Phone}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Genero: {{cliente.Gender}}
+                        <span>
+                          Genero:
+                        </span>
+                        {{cliente.Gender}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
-                        Estado Civil: {{cliente.CivilStatus}}
+                        <span>
+                          Estado Civil:
+                        </span>
+                        {{cliente.CivilStatus}}
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 p-1">
+                        <span>
+                          Dedicacion:
+                        </span>
                         {{cliente.Job}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-1">
+                        <span>
+                          Edad:
+                        </span>
+                        {{cliente.BirthDate}}
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-8 p-1">
+                        <span>
+                          Direccion:
+                        </span>
+                        {{cliente.Direction}}
                       </div>
                     </div>
                   </div>
@@ -94,20 +125,9 @@
               </div>
             </div>
           </div>
-          <div class="col-12 p-1">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-4 p-1">
-                Fecha Nacimiento:
-                <br>
-                {{cliente.BirthDate}}
-              </div>
-              <div class="col-12 col-md-6 col-lg-8 p-1">
-                Direccion:
-                <br>
-                {{cliente.Direction}}
-              </div>
-            </div>
-          </div>
+
+
+
           <div class="col-12 p-1">
             <button (click)="viewdetails()"
               type="button" class="btn btn-primary"
@@ -139,13 +159,13 @@
               <input type="text" class="form-control col-md-3" id="FI">
             </div>
           </div>
-          <div class="form-group"> 
+          <div class="form-group">
             <div class="row">
               <label for="SS" class="bmd-label-floating col-md-1">SS:</label>
               <textarea class="form-control col-md-11" id="SS"></textarea>
             </div>
           </div>
-          <div class="form-group"> 
+          <div class="form-group">
             <div class="row">
               <label for="DesProblema" class="bmd-label-floating col-md-4">DESCRIPCIÓN DEL PROBLEMA:</label>
               <textarea class="form-control col-md-8" id="DesProblema"></textarea>
@@ -162,7 +182,7 @@
               <input type="text" class="form-control col-md-2" id="Alergias">
             </div>
           </div>
-          <div class="form-group"> 
+          <div class="form-group">
             <div class="row">
               <label for="ExaFisico" class="bmd-label-floating col-md-2">EXAMEN FÍSICO:</label>
               <textarea class="form-control col-md-10" id="ExaFisico" rows="6"></textarea>
@@ -181,7 +201,7 @@
               <textarea class="form-control col-md-5" id="D4"></textarea>
             </div>
           </div>
-          <div class="form-group"> 
+          <div class="form-group">
             <div class="row">
               <label for="ExaLaboratorio" class="bmd-label-floating col-md-4">EXAMENES DE LABORATORIO:</label>
               <textarea class="form-control col-md-8" id="ExaLaboratorio" rows="3"></textarea>

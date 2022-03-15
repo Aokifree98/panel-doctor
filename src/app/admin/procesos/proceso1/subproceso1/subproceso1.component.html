@@ -1,61 +1,101 @@
 <div class="row">
-  <div class="col-12 p-1">
+  <div class="col-12 col-lg-8 p-1">
     <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="text-center">
-          Citas del Dia
+        <h4 class="card-title text-center">
+          Citas de la Fecha
         </h4>
       </div>
       <div class="card-body">
         <div class="row">
-          <div *ngIf="!interruptor" class="col-12 p-1">
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    Paciente
-                  </th>
-                  <th>
-                    Especialidad
-                  </th>
-                  <th>
-                    Hora
-                  </th>
-                  <th>
-                    ...
-                  </th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of reservasfiltradas">
-                    <td>
-                      {{item.cliente.Name + '' + item.cliente.LastName}}
-                    </td>
-                    <td>
-                      {{item.horario.especialista.especialidad.Name}}
-                    </td>
-                    <td>
-                      {{item.horario.hora.Start}}
-                    </td>
-                    <td class="text-primary">
-                      <button (click)="atender(item.id)" type="button" class="btn btn-info">
-                        <span class="material-icons">
-                          visibility
-                        </span>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="col-12 p-1">
+            <form class="was-validated">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 p-1">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-12 col-md-6 p-1">
+                        <label class="bmd-label-floating" for="fecha">
+                          Fecha de Citas
+                        </label>
+                      </div>
+                      <div class="col-12 col-md-6 p-1">
+                        <input type="date"
+                        class="form-control"
+                        id="fecha" name="fecha"
+                        autofocus tabindex="1"
+                        [min]="stringmin" [max]="stringmax"
+                        [(ngModel)]="fecha" required>
+                        <div class="valid-feedback">
+                          Campo rellenado.
+                        </div>
+                        <div class="invalid-feedback">
+                          Por favor rellene el campo.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 p-1">
+                  <button (click)="getreservas()" type="button" class="btn btn-primary">
+                    Ver Citas
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div *ngIf="interruptor" class="col-12 p-1">
+          <div class="col-12 p-1">
             <div class="row">
-              <div class="col-12 col-md-6 col-lg-4 p-1" *ngFor="let item of especialistasfiltrados">
-                <button (click)="especialistsselected(item.id)" type="button" class="btn btn-info">
-                  <span class="material-icons">
-                    edit
-                    </span>
-                </button>
+              <div *ngIf="!bandera" class="col-12 p-1">
+                <h2 class="text-danger text-center">
+                  No hay Citas en esta Fecha
+                </h2>
+              </div>
+              <div *ngIf="bandera" class="col-12 p-1">
+                <div  class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Paciente
+                      </th>
+                      <th>
+                        Especialidad
+                      </th>
+                      <th>
+                        Estado
+                      </th>
+                      <th>
+                        Hora
+                      </th>
+                      <th>
+                        ...
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of reservasfiltradas">
+                        <td>
+                          {{item.cliente.Name + ' ' + item.cliente.LastName}}
+                        </td>
+                        <td>
+                          {{item.horario.especialista.especialidad.Name}}
+                        </td>
+                        <td>
+                          {{item.Condition}}
+                        </td>
+                        <td>
+                          {{item.horario.hora.Start + ' - ' + item.horario.hora.End}}
+                        </td>
+                        <td class="text-primary">
+                          <button (click)="detail(item.id)" type="button" class="btn btn-info">
+                            <span class="material-icons">
+                              visibility
+                            </span>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -63,814 +103,63 @@
       </div>
     </div>
   </div>
-  <!-- <div class="col-12 col-lg-6 p-1">
+  <div class="col-12 col-lg-4 p-1">
     <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="text-center">
-          Detalles
+        <h4 *ngIf="!banderita" class="text-center">
+          Detalles Cita
+        </h4>
+        <h4 *ngIf="banderita" class="text-center">
+          Codigo de Cita: {{ticket.id}}
+          <br>
         </h4>
       </div>
-      <div class="card-body">
-
-      </div>
-    </div>
-  </div> -->
-</div>
-<!-- <div class="row">
-    <div class="col-12 col-lg-8">
-      <div class="card">
-        <div class="card-header">
-          <div class="col-12 col-md-6 cuadrillos p-1" *ngFor="let obj of fields">
-            <div>
-              <button type="submit" class="btn btn-outline-success btn-lg btn-block btn-pill" (click)="fieldsselected(obj.id)">
-                {{obj.Name}}
-              </button>
-            </div>
+      <div class="card-body text-center">
+        <div class="row">
+          <div class="col-12 p-1">
+            <h2>
+              Nombres y Apellidos:
+              <br>
+              {{ticket.cliente.Name + ' ' + ticket.cliente.LastName}}
+            </h2>
           </div>
-        </div>
-        <div class="card-body">
-          <div>
-            <h4 class="text-center">
-              Lista de Clientes de Hoy
+          <div class="col-12 p-1">
+            <h3>
+              Especialidad:
+              <br>
+              {{ticket.horario.especialista.especialidad.Name}}
+            </h3>
+          </div>
+          <div class="col-12 p-1">
+            <h4>
+              Doctor:
+              <br>
+              {{ticket.horario.especialista.doctor.Name + ' ' + ticket.horario.especialista.doctor.LastName}}
             </h4>
           </div>
-          <div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Pago</th>
-                  <th>Estado</th>
-                  <th>Detalles</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let obj of reservasfiltradas">
-                  <td>{{obj.cliente.Fullname}}</td>
-                  <td>{{obj.Pago}}</td>
-                  <td>{{obj.Estado}}</td>
-                  <td>
-                    <button type="submit" class="btn btn-outline-warning btn-lg btn-block btn-pill" (click)="details(obj.id)">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-12 p-1">
+            Cupo: {{ticket.horario.Cupo + ' --- ' + ticket.horario.hora.Start + ' - ' + ticket.horario.hora.End}}
+          </div>
+          <div *ngIf="1filtro" class="col-12 p-1 text-danger">
+            La cita no es del dia de hoy :/
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-lg-4">
-      <div class="card">
-        <div class="card-header">
-          <h4>
-            Detalles
-          </h4>
-        </div>
-        <div class="card-body">
-          <div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Entrada</th>
-                  <th>Salida</th>
-                  <th>Atendido</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let obj of detalles">
-                  <td>{{obj.horario.hora.Horainicio}}</td>
-                  <td>{{obj.horario.hora.Horafin}}</td>
-                  <td>
-                    <button type="submit" class="btn btn-outline-success btn-lg btn-block btn-pill" (click)="atender(obj.id)">
-                      <i class="fas fa-check"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-<!-- <div class="row">
-  <div class="col-xl-4 col-lg-12">
-    <div class="card card-chart">
-      <div class="card-header card-header-success">
-        <div class="ct-chart" id="dailySalesChart"></div>
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">Daily Sales</h4>
-        <p class="card-category">
-          <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-      </div>
       <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">access_time</i> updated 4 minutes ago
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-lg-12">
-    <div class="card card-chart">
-      <div class="card-header card-header-warning">
-        <div class="ct-chart" id="websiteViewsChart"></div>
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">Email Subscriptions</h4>
-        <p class="card-category">Last Campaign Performance</p>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">access_time</i> campaign sent 2 days ago
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-lg-12">
-    <div class="card card-chart">
-      <div class="card-header card-header-danger">
-        <div class="ct-chart" id="completedTasksChart"></div>
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">Completed Tasks</h4>
-        <p class="card-category">Last Campaign Performance</p>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">access_time</i> campaign sent 2 days ago
-        </div>
+        <button type="button"
+          (click)="atender(reservita.id)"
+          *ngIf="banderita"
+          class="btn btn-primary">
+          Atender
+        </button>
+        <!-- boton con filtro -->
+        <!-- <button type="button"
+          (click)="atender(reservita.id)"
+          *ngIf="banderita && filtro"
+          class="btn btn-primary">
+          Atender
+        </button> -->
       </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-    <div class="card card-stats">
-      <div class="card-header card-header-warning card-header-icon">
-        <div class="card-icon">
-          <i class="material-icons">content_copy</i>
-        </div>
-        <p class="card-category">Used Space</p>
-        <h3 class="card-title">49/50
-          <small>GB</small>
-        </h3>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons text-warning">warning</i>
-          <a href="#pablo" class="warning-link">Get More Space...</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-    <div class="card card-stats">
-      <div class="card-header card-header-success card-header-icon">
-        <div class="card-icon">
-          <i class="material-icons">store</i>
-        </div>
-        <p class="card-category">Revenue</p>
-        <h3 class="card-title">$34,245</h3>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">date_range</i> Last 24 Hours
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-    <div class="card card-stats">
-      <div class="card-header card-header-danger card-header-icon">
-        <div class="card-icon">
-          <i class="material-icons">info_outline</i>
-        </div>
-        <p class="card-category">Fixed Issues</p>
-        <h3 class="card-title">75</h3>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">local_offer</i> Tracked from Github
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-    <div class="card card-stats">
-      <div class="card-header card-header-info card-header-icon">
-        <div class="card-icon">
-          <i class="fa fa-twitter"></i>
-        </div>
-        <p class="card-category">Followers</p>
-        <h3 class="card-title">+245</h3>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <i class="material-icons">update</i> Just Updated
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-6 col-md-12">
-    <div class="card">
-      <div class="card-header card-header-primary">
-        <h4 class="card-title">Employees Stats</h4>
-        <p class="card-category">New employees on 15th September, 2016</p>
-      </div>
-      <div class="card-body table-responsive">
-        <table class="table table-hover">
-          <thead class="text-warning">
-            <th>ID</th>
-            <th>Name</th>
-            <th>Salary</th>
-            <th>Country</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Dakota Rice</td>
-              <td>$36,738</td>
-              <td>Niger</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Minerva Hooper</td>
-              <td>$23,789</td>
-              <td>Curaçao</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Sage Rodriguez</td>
-              <td>$56,142</td>
-              <td>Netherlands</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Philip Chaney</td>
-              <td>$38,735</td>
-              <td>Korea, South</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 col-md-12">
-    <div class="card">
-      <div class="card-header card-header-tabs card-header-warning">
-        <div class="nav-tabs-navigation">
-          <div class="nav-tabs-wrapper">
-            <span class="nav-tabs-title">Tasks:</span>
-            <ul class="nav nav-tabs" data-tabs="tabs">
-              <li class="nav-item">
-                <a class="nav-link active" href="#profile" data-toggle="tab">
-                  <i class="material-icons">bug_report</i> Bugs
-                  <div class="ripple-container"></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#messages" data-toggle="tab">
-                  <i class="material-icons">code</i> Website
-                  <div class="ripple-container"></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#settings" data-toggle="tab">
-                  <i class="material-icons">cloud</i> Server
-                  <div class="ripple-container"></div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tab-content">
-          <div class="tab-pane active" id="profile">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Sign contract for "What are conference organizers afraid of?"</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                  </td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tab-pane" id="messages">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                  </td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Sign contract for "What are conference organizers afraid of?"</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tab-pane" id="settings">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                  </td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>Sign contract for "What are conference organizers afraid of?"</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-<!-- <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="text-center">
-            Fecha de Reserva de Cita
-          </h4>
-        </div>
-        <div class="card-body">
-          <form class="was-validated">
-            <div class="form-group">
-              <label class="form-col-form-label" for="fecha">
-                <strong>
-                  Fecha de Reserva
-                </strong>
-              </label>
-              <input type="date" class="form-control" id="fecha" name="fecha" [min]="fechaActual" [(ngModel)]="fecha" required>
-              <div class="valid-feedback">
-                Campo rellenado.
-              </div>
-              <div class="invalid-feedback">
-                Por favor rellene el campo.
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="text-center">
-            CLiente
-          </h4>
-        </div>
-        <div class="card-body">
-          <div class="row" *ngIf="botones">
-            <div class="col-lg-6 campo p-1">
-              <button (click)="buscarcliente()" type="button" class="btn btn-info btn-lg btn-block btn-pill">
-                Buscar
-              </button>
-            </div>
-            <div class="col-lg-6 campo p-1">
-              <button (click)="crearcliente()" type="button" class="btn btn-info btn-lg btn-block btn-pill">
-                Crear
-              </button>
-            </div>
-          </div>
-          <div class="col-12" *ngIf="buscar">
-            <form id="formSearchCliente" class="was-validated" name="formSearchCliente">
-              <div class="form-group">
-                <label class="form-col-form-label" for="dato">
-                    Poner el numero de documento o correo
-                </label>
-                <input type="text" class="form-control" id="Fullname" name="dato" [(ngModel)]="dato" required>
-                <div class="valid-feedback">
-                  Campo rellenado.
-                </div>
-                <div class="invalid-feedback">
-                  Por favor rellene el campo.
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6 col-12 campo">
-                  <button type="submit" class="btn btn-success btn-lg btn-block btn-pill" (click)="searchEmailCliente()">
-                    Por Correo
-                  </button>
-                </div>
-                <div class="col-lg-6 col-12 campo">
-                  <button type="submit" class="btn btn-success btn-lg btn-block btn-pill" (click)="searchDocCliente()">
-                    Documento
-                  </button>
-                </div>
-              </div>
-              <br>
-            </form>
-          </div>
-          <div class="col-12" *ngIf="crear">
-            <form>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Nombres
-                    </label>
-                    <input name="cliente.Name"
-                    [(ngModel)]="cliente.Name"
-                    required minlength="3"
-                    autofocus tabindex="1"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Apellidos
-                    </label>
-                    <input name="cliente.LastName"
-                    [(ngModel)]="cliente.LastName"
-                    required minlength="5" tabindex="2"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Direccion
-                    </label>
-                    <input name="cliente.Direction"
-                    [(ngModel)]="cliente.Direction"
-                    required minlength="7" tabindex="3"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Profesion u Ocupacion
-                    </label>
-                    <input name="cliente.Job"
-                    [(ngModel)]="cliente.Job"
-                    required minlength="5" tabindex="4"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Celular
-                    </label>
-                    <input name="cliente.Phone"
-                    [(ngModel)]="cliente.Phone"
-                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                    required minlength="9" tabindex="5"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Fecha Nacimiento
-                    </label>
-                    <input type="date"
-                      class="form-control"
-                      max="<?= date('Y-m-d'); ?>"
-                      required tabindex="6"
-                      name="cliente.BirthDate"
-                      [(ngModel)]="cliente.BirthDate"
-                      placeholder="a partir de 25 anios antes">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Correo
-                    </label>
-                    <input name="cliente.Email"
-                    [(ngModel)]="cliente.Email"
-                    pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
-                    required minlength="5" tabindex="7"
-                    placeholder="........."
-                    type="email" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Num. Documento
-                    </label>
-                    <input name="cliente.DocumentNumber"
-                    [(ngModel)]="cliente.DocumentNumber"
-                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                    required minlength="8" tabindex="8"
-                    placeholder="........."
-                    type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Genero
-                    </label>
-                    <br>
-                    <select (change)='onOptionsSelected($event)'
-                      id="select-type-basic"
-                      class="form-control"
-                      [(ngModel)]="cliente.Gender"
-                      name="cliente.Gender"
-                      required tabindex="9">
-                      <option selected>
-                        Seleccione su Genero
-                      </option>
-                      <option [value]="obj.name" *ngFor="let obj of genero">
-                      {{obj.name}}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">
-                      Estado Civil
-                    </label>
-                    <br>
-                    <select (change)='onOptionsSelectedStatus($event)'
-                      id="select-type-basic" class="form-control"
-                      [(ngModel)]="cliente.CivilStatus"
-                      name="cliente.CivilStatus"
-                      required tabindex="10">
-                      <option selected>
-                        Seleccione su Estado Civil
-                      </option>
-                      <option [value]="obj.name" *ngFor="let obj of estadocivil">
-                      {{obj.name}}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <button (click)="saveCliente()"
-              type="submit" class="btn btn-primary pull-right">
-                Crear
-              </button>
-              <div class="clearfix"></div>
-            </form>
-          </div>
-          <div class="col-12" *ngIf="datoscliente">
-            <div>
-              <h4 class="text-center">
-                Datos:
-              </h4>
-            </div>
-            <div class="text-center">
-              <h3>
-                Apellidos y Nombres:
-              </h3>
-              <h3>
-                {{cliente1.Name + ' ' + cliente1.LastName}}
-              </h3>
-              <h3>
-                Correo:
-              </h3>
-              <h3>
-                {{cliente1.Email}}
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="text-center">
-            Especialidades
-          </h4>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>
-                  Nombre
-                </th>
-                <th>
-                  Doctor
-                </th>
-                <th>
-                  Precio
-                </th>
-                <th>
-                  ....
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let obj of especialistas">
-                <td>
-                  {{obj.especialidad.Name}}
-                </td>
-                <td>
-                  {{obj.doctor.Name + ' ' + obj.doctor.LastName}}
-                </td>>
-                <td>
-                  s/.{{obj.especialidad.Price}}.00
-                </td>
-                <td>
-                  <button (click)="reservar(obj.id,fecha)" type="button" class="btn btn-pill btn-block btn-primary">
-                    Reservar
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div> -->

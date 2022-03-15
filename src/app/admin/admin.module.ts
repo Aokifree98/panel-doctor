@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule, DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 // para los avisos al cliente
 import { ToastrModule } from 'ngx-toastr';
@@ -181,6 +181,13 @@ import { BoletaComponent } from './boleta/boleta.component';
       // ChartsModule,
       // PerfectScrollbarModule,
       ToastrModule.forRoot(),
+    ],
+    providers: [
+      DatePipe,
+      {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy
+      }
     ]
   }
 )

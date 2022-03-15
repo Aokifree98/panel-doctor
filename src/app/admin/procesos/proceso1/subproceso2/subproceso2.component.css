@@ -1,0 +1,21 @@
+img {
+  width: 150px;
+  height: 150px;
+}
+span, label, h2 {
+  font-weight: bold;
+  color: #7b1fa2;
+}
+.borde {
+  border-style: dotted;
+  border-width: 1px;
+  border-color: #7b1fa2;
+  /* border-style: dotted; */
+}
+
+/* label {
+  text-align: end;
+}
+input {
+  text-align: start;
+} */

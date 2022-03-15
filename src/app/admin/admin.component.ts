@@ -65,12 +65,12 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     if (this.doctorService.isLoggedIn()) {
       this.client = JSON.parse(localStorage.getItem('doctor'));
-      this.router.navigate(
-        [
-          'admin',
-          'home'
-        ]
-      );
+      // this.router.navigate(
+      //   [
+      //     'admin',
+      //     'home'
+      //   ]
+      // );
     } else {
       this.router.navigate(
         [

@@ -33,6 +33,10 @@ export class CitaService {
     return this.http.get(`${this.apiUrlcita}/search/topay`);
   }
 
+  getHome(lafecha: string) {
+    return this.http.get(`${this.apiUrlcita}/home/${lafecha}`);
+  }
+
   // tslint:disable-next-line: typedef
   getClientBooking(codigoclient: string) {
     return this.http.get(`${this.apiUrlcita}/search/client/${codigoclient}`);
