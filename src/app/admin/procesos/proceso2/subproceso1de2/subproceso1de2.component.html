@@ -16,6 +16,7 @@
                     <label class="bmd-label-floating">
                       Correo o Numero Documento
                     </label>
+                    <br>
                     <input name="dato"
                     [(ngModel)]="dato"
                     type="text" class="form-control"
@@ -26,14 +27,14 @@
               <div class="row">
                 <div class="col-12 col-md-6">
                   <button (click)="searchEmailCliente()"
-                    type="button" class="btn btn-primary"
+                    type="button" class="btn btn-primary btn-block"
                     [disabled]="(dato === '')? true:false">
                     Por Correo
                   </button>
                 </div>
                 <div class="col-12 col-md-6">
                   <button (click)="searchDocCliente()"
-                    type="button" class="btn btn-primary"
+                    type="button" class="btn btn-primary btn-block"
                   [disabled]="(dato === '')? true:false">
                     Por Documento
                   </button>
@@ -125,15 +126,31 @@
               </div>
             </div>
           </div>
-
-
-
           <div class="col-12 p-1">
-            <button (click)="viewdetails()"
+            <button (click)="editar()"
               type="button" class="btn btn-primary"
               [disabled]="(cliente === 0)? true:false">
-              Ver Historia Clinica
+              Editar Paciente
             </button>
+          </div>
+          <hr>
+          <div class="col-12 col-md-6 col-lg-4 p-1" *ngIf="!varios">
+            <button (click)="unahistoria()"
+              type="button" class="btn btn-primary btn-block"
+              [disabled]="(cliente === 0)? true:false">
+              Historial
+            </button>
+          </div>
+          <div class="col-12 p-1" *ngIf="varios">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4 p-1" *ngFor="let obj of especialidades">
+                <button (click)="historia(obj.EspecialidadId)" *ngIf="obj.EspecialidadId !== 2"
+                  type="button" class="btn btn-primary btn-block"
+                  [disabled]="(cliente === 0)? true:false">
+                  {{obj.especialidad.Name}}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -147,8 +164,75 @@
         </h4>
       </div>
       <div class="card-body">
-        <form>
-          <label class="bmd-label-floating ">EPISODIO ACTUAL</label>
+        <div class="row">
+          <div class="col-12 p-1" *ngFor="let item of historial">
+            <div class="historia">
+              <div class="row">
+                <div class="col-12 col-lg-4 p-1">
+                  <span>
+                    Referido por:
+                  </span>
+                  {{item.Referred}}
+                </div>
+                <div class="col-12 col-lg-4 p-1">
+                  <span>
+                    Acompaniante:
+                  </span>
+                  {{item.Companion}}
+                </div>
+                <div class="col-12 col-lg-4 p-1">
+                  <span>
+                    Parentesco:
+                  </span>
+                  {{item.Relationship}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-4 col-md-3 col-lg-2">
+                  <span>
+                    PA:
+                  </span>
+                  {{item.BloodPressure}}
+                </div>
+                <div class="col-4 col-md-3 col-lg-2">
+                  <span>
+                    FC:
+                  </span>
+                  {{item.HeartRate}}
+                </div>
+                <div class="col-4 col-md-3 col-lg-2">
+                  <span>
+                    FR:
+                  </span>
+                  {{item.BreathingFrequency}}
+                </div>
+                <div class="col-4 col-md-3 col-lg-2">
+                  <span>
+                    T:
+                  </span>
+                  {{item.Temperature}}
+                </div>
+                <div class="col-4 col-md-3 col-lg-2">
+                  <span>
+                    SO2:
+                  </span>
+                  {{item.Saturation}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="editarhistoria(item.id)">
+                Actualizar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <form> -->
+          <!-- <label class="bmd-label-floating ">EPISODIO ACTUAL</label>
           <div class="form-group">
             <div class="row">
               <label for="TE" class="bmd-label-floating col-md-1">TE:</label>
@@ -206,9 +290,9 @@
               <label for="ExaLaboratorio" class="bmd-label-floating col-md-4">EXAMENES DE LABORATORIO:</label>
               <textarea class="form-control col-md-8" id="ExaLaboratorio" rows="3"></textarea>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
+          </div> -->
+
+        <!-- </form> -->
       </div>
     </div>
   </div>

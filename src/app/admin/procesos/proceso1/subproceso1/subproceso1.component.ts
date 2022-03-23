@@ -17,7 +17,6 @@ export class Subproceso1Component implements OnInit {
   reservasfiltradas: any = [];
   bandera = false;
   banderita = false;
-  filtro = false;
   doctor: Doctor = {
     id: 0,
     Name: '',
@@ -163,57 +162,12 @@ export class Subproceso1Component implements OnInit {
     this.stringmin = this.pd.transform(this.fechamin, 'yyyy-MM-dd');
     this.stringmax = this.pd.transform(this.fechamax, 'yyyy-MM-dd');
     this.doctor = JSON.parse(localStorage.getItem('doctor'));
-    this.filtrohoy();
-  }
-
-  filtrohoy() {
     const fechita = new Date();
-    const dia = fechita.getDate() + 1;
-    const mes = fechita.getMonth() + 1;
-    const anio = fechita.getFullYear().toString();
-    let diatring: string;
-    let mestring: string;
-    if (dia < 10) {
-      diatring = '0' + dia.toString();
-    } else {
-      diatring = dia.toString();
-    }
-    if (mes < 10) {
-      mestring = '0' + mes.toString();
-    } else {
-      mestring = mes.toString();
-    }
-    const fechastring = anio + '-' + mestring + '-' + diatring;
-    this.hoystring = fechastring;
+    this.hoystring = fechita.toISOString().split('T')[0];
     console.log(this.hoystring);
-  }
-  getreservas() {
     const codigo = this.doctor.id;
-    const fechita = new Date(this.fecha);
-    const dia = fechita.getDate() + 1;
-    const mes = fechita.getMonth() + 1;
-    const anio = fechita.getFullYear().toString();
-    let diatring: string;
-    let mestring: string;
-    if (dia < 10) {
-      diatring = '0' + dia.toString();
-    } else {
-      diatring = dia.toString();
-    }
-    if (mes < 10) {
-      mestring = '0' + mes.toString();
-    } else {
-      mestring = mes.toString();
-    }
-    const fechastring = anio + '-' + mestring + '-' + diatring;
-    this.fechastringvalue = fechastring;
-    console.log(fechastring);
-    if (this.fechastringvalue === this.hoystring) {
-      this.filtro = true;
-    } else {
-      this.filtro = false;
-    }
-    this.reservaService.getHome(fechastring).subscribe(
+    console.log(fechita);
+    this.reservaService.getHome(this.hoystring).subscribe(
       rescitas => {
         console.log(rescitas);
         if (Object.entries(rescitas).length > 0) {

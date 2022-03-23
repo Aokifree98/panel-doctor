@@ -161,55 +161,21 @@ export class HomeComponent implements OnInit {
   }
 
   filtrohoy() {
-    // probar el filtro durante la hora del dia
     const fechita = new Date();
-    console.log(fechita);
-    const dia = fechita.getDate() + 1;
-    const mes = fechita.getMonth() + 1;
-    const anio = fechita.getFullYear().toString();
-    let diatring: string;
-    let mestring: string;
-    if (dia < 10) {
-      diatring = '0' + dia.toString();
-    } else {
-      diatring = dia.toString();
-    }
-    if (mes < 10) {
-      mestring = '0' + mes.toString();
-    } else {
-      mestring = mes.toString();
-    }
-    const fechastring = anio + '-' + mestring + '-' + diatring;
-    this.hoystring = fechastring;
-    console.log(this.hoystring);
+    this.hoystring = fechita.toISOString().split('T')[0];
   }
   getreservas() {
     const codigo = this.doctor.id;
     const fechita = new Date(this.fecha);
-    const dia = fechita.getDate() + 1;
-    const mes = fechita.getMonth() + 1;
-    const anio = fechita.getFullYear().toString();
-    let diatring: string;
-    let mestring: string;
-    if (dia < 10) {
-      diatring = '0' + dia.toString();
-    } else {
-      diatring = dia.toString();
-    }
-    if (mes < 10) {
-      mestring = '0' + mes.toString();
-    } else {
-      mestring = mes.toString();
-    }
-    const fechastring = anio + '-' + mestring + '-' + diatring;
-    this.fechastringvalue = fechastring;
-    console.log(fechastring);
+    this.fechastringvalue = fechita.toISOString().split('T')[0];
+    console.log(this.fechastringvalue, this.hoystring);
     if (this.fechastringvalue === this.hoystring) {
       this.filtro = true;
+      console.log('la fecha es hoy');
     } else {
       this.filtro = false;
     }
-    this.reservaService.getHome(fechastring).subscribe(
+    this.reservaService.getHome(this.fechastringvalue).subscribe(
       rescitas => {
         console.log(rescitas);
         if (Object.entries(rescitas).length > 0) {

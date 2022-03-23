@@ -1,0 +1,20 @@
+.panel-heading{
+  background: -prefix-linear-gradient(left top, #c8afe1, white);
+  background: linear-gradient(to bottom right, rgb(200, 175, 225), white);
+  border-radius: 5px;
+  /*border: solid 1px;
+  border-color: rgb(121, 35, 165);*/
+}
+
+
+.mapaDermatomasFrente a {
+  fill: beige;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.mapaDermatomasDetras a {
+  fill: beige;
+  stroke: black;
+  stroke-width: 1px;
+}

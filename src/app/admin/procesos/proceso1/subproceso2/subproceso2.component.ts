@@ -1,6 +1,6 @@
 import { Cita } from 'src/app/models/Cita';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ListCita } from 'src/app/models/listcita';
 import { CitaService } from 'src/app/services/cita.service';
@@ -124,7 +124,9 @@ export class Subproceso2Component implements OnInit {
   };
   ticket: any = this.reservadetail;
   elcodigo;
+  mensaje;
   constructor(
+    private router: Router,
     private toastr: ToastrService,
     private reservaService: CitaService,
     private activatedRoute: ActivatedRoute,
@@ -137,6 +139,7 @@ export class Subproceso2Component implements OnInit {
           this.reserva = res;
           this.ticket = res;
           const codigo = this.ticket.id;
+          this.elcodigo = codigo;
           this.toastr.success('su boleta');
         },
         err => {
@@ -144,5 +147,22 @@ export class Subproceso2Component implements OnInit {
         }
       );
     }
+  }
+  historial() {
+    this.reserva.Condition = 'atendido';
+    this.reservaService.updateCita(this.elcodigo, this.reserva).subscribe(
+      actualizacion => {
+        this.mensaje = actualizacion;
+        this.toastr.info('Datos Registrados');
+        this.router.navigate(
+          [
+            'admin',
+            'home'
+          ]
+        );
+      }, err => {
+        this.toastr.error('Error Crear cita de historial');
+      }
+    );
   }
 }

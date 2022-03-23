@@ -1,0 +1,24 @@
+/* body{
+  background-color: rgb(197, 240, 251);
+ } */
+.mapadiv {
+     width: 50%;
+     margin: auto;
+ }
+
+/* .mapadiv path {
+  fill: rgb(133, 133, 133);
+  stroke: rgb(167, 167, 167);
+  stroke-width: 1px;
+ } */
+ /* path {
+  fill: rgb(133, 133, 133);
+  stroke: rgb(167, 167, 167);
+  stroke-width: 1px;
+ } */
+ /* .mapadiv path:hover {
+     fill:rgb(0, 234, 255);
+ } */
+/* path:hover {
+  fill:rgb(0, 234, 255);
+} */

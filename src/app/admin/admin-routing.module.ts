@@ -76,6 +76,7 @@ import { BoletaComponent } from './boleta/boleta.component';
 import { Subproceso4de3Component } from './procesos/proceso3/subproceso4de3/subproceso4de3.component';
 import { Subproceso5de3Component } from './procesos/proceso3/subproceso5de3/subproceso5de3.component';
 import { Subproceso6de3Component } from './procesos/proceso3/subproceso6de3/subproceso6de3.component';
+import { Subproceso4Component } from './procesos/proceso1/subproceso4/subproceso4.component';
 
 
 const routes: Routes = [
@@ -322,6 +323,10 @@ const routes: Routes = [
               {
                 path: 'subproceso3/:id',
                 component: Subproceso3Component
+              },
+              {
+                path: 'subproceso4/:id',
+                component: Subproceso4Component
               }
             ]
           },
@@ -333,11 +338,15 @@ const routes: Routes = [
                 component: Subproceso1de2Component
               },
               {
-                path: 'subproceso2',
+                path: 'subproceso2/:id',
                 component: Subproceso2de2Component
               },
               {
-                path: 'subproceso3',
+                path: 'subproceso3/:id',
+                component: Subproceso3de2Component
+              },
+              {
+                path: 'subproceso3/:id',
                 component: Subproceso3de2Component
               },
             ]
@@ -403,7 +412,12 @@ const routes: Routes = [
             ]
           },
         ]
-      }
+      },
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'prefix'
+      },
     ],
   },
 ];

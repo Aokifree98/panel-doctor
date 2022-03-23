@@ -131,24 +131,23 @@
             </h3>
           </div>
           <div class="col-12 p-1">
-            <h4>
-              Doctor:
-              <br>
-              {{ticket.horario.especialista.doctor.Name + ' ' + ticket.horario.especialista.doctor.LastName}}
-            </h4>
-          </div>
-          <div class="col-12 p-1">
             Cupo: {{ticket.horario.Cupo + ' --- ' + ticket.horario.hora.Start + ' - ' + ticket.horario.hora.End}}
           </div>
-          <div *ngIf="1filtro" class="col-12 p-1 text-danger">
+          <div *ngIf="!filtro" class="col-12 p-1 text-danger">
             La cita no es del dia de hoy :/
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button type="button"
+        <!-- <button type="button"
         (click)="atender(reservita.id)"
           *ngIf="banderita && filtro"
+          class="btn btn-primary">
+          Atender
+        </button> -->
+        <button type="button"
+        (click)="atender(reservita.id)"
+          *ngIf="banderita"
           class="btn btn-primary">
           Atender
         </button>

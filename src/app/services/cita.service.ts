@@ -37,7 +37,10 @@ export class CitaService {
     return this.http.get(`${this.apiUrlcita}/home/${lafecha}`);
   }
 
-  // tslint:disable-next-line: typedef
+  getHistorial(codigoclient: string | number, especialidad: string | number) {
+    return this.http.get(`${this.apiUrlcita}/filtro/historial/${codigoclient}/${especialidad}`);
+  }
+
   getClientBooking(codigoclient: string) {
     return this.http.get(`${this.apiUrlcita}/search/client/${codigoclient}`);
   }
