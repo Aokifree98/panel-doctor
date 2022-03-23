@@ -29,7 +29,7 @@ export class Subproceso1de3Component implements OnInit {
     this.bannderaatras = !this.bannderaatras;
     const id = events.path[1].id;
     const par = document.getElementById(id);
-    if (this.bandera === true) {
+    if (this.bannderaatras === true) {
       par.style.setProperty('fill', 'red');
       par.style.setProperty('stroke', 'green');
       par.style.setProperty('stroke-width', '1px');
