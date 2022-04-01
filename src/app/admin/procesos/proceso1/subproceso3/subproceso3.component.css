@@ -5,3 +5,11 @@
   margin-right: auto;
   display:block;
 }
+img {
+  width: 150px;
+  height: 150px;
+}
+span, label, h2 {
+  font-weight: bold;
+  color: #7b1fa2 !important;
+}

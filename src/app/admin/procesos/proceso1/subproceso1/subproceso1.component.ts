@@ -209,14 +209,28 @@ export class Subproceso1Component implements OnInit {
     );
   }
   atender(codigo) {
-    this.router.navigate(
-      [
-        'admin',
-        'procesos',
-        'proceso1',
-        'subproceso2',
-        codigo
-      ]
-    );
+    console.log(this.reservita);
+    const parametro = this.reservita.Type;
+    if (parametro === 'normal') {
+      this.router.navigate(
+        [
+          'admin',
+          'procesos',
+          'proceso1',
+          'subproceso2',
+          codigo
+        ]
+      );
+    } else if (parametro === 'medicina del dolor') {
+      this.router.navigate(
+        [
+          'admin',
+          'procesos',
+          'proceso3',
+          'subproceso1',
+          codigo
+        ]
+      );
+    }
   }
 }

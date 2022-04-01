@@ -164,7 +164,7 @@
         </h4>
       </div>
       <div class="card-body">
-        <div class="row">
+        <div class="row p-4">
           <div class="col-12 p-1" *ngFor="let item of historial">
             <div class="historia">
               <div class="row">
@@ -222,77 +222,119 @@
               </div>
               <hr>
               <div class="row justify-content-center">
-
+                <div class="col-12 p-1">
+                  <h2 class="text-center">
+                    EPISODIO ACTUAL
+                  </h2>
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    TE:
+                  </span>
+                  <br>
+                  {{item.SickTime}}
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    EA:
+                  </span>
+                  <br>
+                  {{item.CurrentEpisode}}
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    FI:
+                  </span>
+                  <br>
+                  {{item.StartWay}}
+                </div>
               </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <span>
+                    SS:
+                  </span>
+                  <br>
+                  {{item.SignsandSymptoms}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <span>
+                    DESCRIPCIÓN DEL PROBLEMA:
+                  </span>
+                  <br>
+                  {{item.DescriptionProblem}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <h2 class="text-center">
+                    ANTECEDENTES PRINCIPALES
+                  </h2>
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    QX:
+                  </span>
+                  <br>
+                  {{item.SurgicalHistory}}
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    MEDICOS:
+                  </span>
+                  <br>
+                  {{item.MedicalHistory}}
+                </div>
+                <div class="col-12 col-lg-4 p-1 text-center">
+                  <span>
+                    ALERGIAS:
+                  </span>
+                  <br>
+                  {{item.AllergicHistory}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <span>
+                    EXAMEN FÍSICO:
+                  </span>
+                  <br>
+                  {{item.PhysicalExam}}
+                </div>
+              </div>
+              <hr>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <span>
+                    DIAGNOSTICO:
+                  </span>
+                  <br>
+                  {{item.Diagnosis}}
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12 p-1">
+                  <span>
+                    EXAMENES DE LABORATORIO:
+                  </span>
+                  <br>
+                  {{item.LaboratoryExam}}
+                </div>
+              </div>
+              <hr>
+              <br>
               <button type="submit" class="btn btn-primary" (click)="editarhistoria(item.id)">
                 Actualizar
               </button>
             </div>
           </div>
         </div>
-
-        <!-- <form> -->
-          <!-- <label class="bmd-label-floating ">EPISODIO ACTUAL</label>
-          <div class="form-group">
-            <div class="row">
-              <label for="TE" class="bmd-label-floating col-md-1">TE:</label>
-              <input type="text" class="form-control col-md-3" id="TE">
-              <label for="EA" class="bmd-label-floating col-md-1">EA:</label>
-              <input type="text" class="form-control col-md-3" id="EA">
-              <label for="FI" class="bmd-label-floating col-md-1">FI:</label>
-              <input type="text" class="form-control col-md-3" id="FI">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <label for="SS" class="bmd-label-floating col-md-1">SS:</label>
-              <textarea class="form-control col-md-11" id="SS"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <label for="DesProblema" class="bmd-label-floating col-md-4">DESCRIPCIÓN DEL PROBLEMA:</label>
-              <textarea class="form-control col-md-8" id="DesProblema"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="bmd-label-floating ">ANTECEDENTES PRINCIPALES</label>
-            <div class="row">
-              <label for="QX" class="bmd-label-floating col-md-1">QX:</label>
-              <input type="text" class="form-control col-md-3" id="QX">
-              <label for="AMedicos" class="bmd-label-floating col-md-2">MEDICOS:</label>
-              <input type="text" class="form-control col-md-2" id="AMedicos">
-              <label for="Alergias" class="bmd-label-floating col-md-2">ALERGIAS:</label>
-              <input type="text" class="form-control col-md-2" id="Alergias">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <label for="ExaFisico" class="bmd-label-floating col-md-2">EXAMEN FÍSICO:</label>
-              <textarea class="form-control col-md-10" id="ExaFisico" rows="6"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="bmd-label-floating ">DIAGNOSTICO</label>
-            <div class="row">
-              <label for="D1" class="bmd-label-floating col-md-1">1.</label>
-              <textarea class="form-control col-md-5" id="D1"></textarea>
-              <label for="D2" class="bmd-label-floating col-md-1">2.</label>
-              <textarea class="form-control col-md-5" id="D2"></textarea>
-              <label for="D3" class="bmd-label-floating col-md-1">3.</label>
-              <textarea class="form-control col-md-5" id="D3"></textarea>
-              <label for="D4" class="bmd-label-floating col-md-1">4.</label>
-              <textarea class="form-control col-md-5" id="D4"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <label for="ExaLaboratorio" class="bmd-label-floating col-md-4">EXAMENES DE LABORATORIO:</label>
-              <textarea class="form-control col-md-8" id="ExaLaboratorio" rows="3"></textarea>
-            </div>
-          </div> -->
-
-        <!-- </form> -->
       </div>
     </div>
   </div>

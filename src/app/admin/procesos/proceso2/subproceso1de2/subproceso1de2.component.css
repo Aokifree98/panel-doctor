@@ -4,5 +4,5 @@ img {
 }
 span, label, h2 {
   font-weight: bold;
-  color: #7b1fa2;
+  color: #7b1fa2 !important;
 }

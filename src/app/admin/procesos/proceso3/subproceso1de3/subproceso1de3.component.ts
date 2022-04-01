@@ -140,6 +140,10 @@ export class Subproceso1de3Component implements OnInit {
     private reservaService: CitaService,
     private activatedRoute: ActivatedRoute,
   ) { }
+  prueba(events) {
+    console.log(events);
+
+  }
   adelante(events) {
     this.bandera = !this.bandera;
     const id = events.path[1].id;
