@@ -16,13 +16,13 @@ span, label, h2 {
 }
 
 
-.mapaDermatomasFrente a {
+.mapaDermatomasFrente a path {
   fill: beige;
   stroke: black;
   stroke-width: 1px;
 }
 
-.mapaDermatomasDetras a {
+.mapaDermatomasDetras a path {
   fill: beige;
   stroke: black;
   stroke-width: 1px;

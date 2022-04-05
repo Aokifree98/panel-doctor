@@ -140,14 +140,27 @@ export class Subproceso1de3Component implements OnInit {
     private reservaService: CitaService,
     private activatedRoute: ActivatedRoute,
   ) { }
-  prueba(events) {
-    console.log(events);
-
+  prueba(parametro) {
+    this.bandera = !this.bandera;
+    const par = document.getElementById(parametro);
+    if (this.bandera === true) {
+      par.style.setProperty('fill', 'red');
+      par.style.setProperty('stroke', 'green');
+      par.style.setProperty('stroke-width', '1px');
+    } else {
+      par.style.setProperty('fill', 'beige');
+      par.style.setProperty('stroke', 'black');
+      par.style.setProperty('stroke-width', '1px');
+    };
   }
+
   adelante(events) {
+    console.log(events);
+    console.log(events.path);
     this.bandera = !this.bandera;
     const id = events.path[1].id;
     const par = document.getElementById(id);
+    console.log(par);
     if (this.bandera === true) {
       par.style.setProperty('fill', 'red');
       par.style.setProperty('stroke', 'green');
