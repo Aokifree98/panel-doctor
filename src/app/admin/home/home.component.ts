@@ -235,7 +235,7 @@ export class HomeComponent implements OnInit {
           'admin',
           'procesos',
           'proceso3',
-          'subproceso1',
+          'subproceso2',
           codigo
         ]
       );

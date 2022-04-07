@@ -1,24 +1,39 @@
-/* body{
-  background-color: rgb(197, 240, 251);
- } */
-.mapadiv {
-     width: 50%;
-     margin: auto;
- }
+img {
+  width: 150px;
+  height: 150px;
+}
+.panel-heading{
+  background: -prefix-linear-gradient(left top, #c8afe1, white);
+  background: linear-gradient(to bottom right, rgb(200, 175, 225), white);
+  border-radius: 5px;
+}
 
-/* .mapadiv path {
-  fill: rgb(133, 133, 133);
-  stroke: rgb(167, 167, 167);
+span, label, h2 {
+  font-weight: bold;
+  color: #7b1fa2;
+}
+
+
+.mapaDermatomasFrente a path {
+  fill: beige;
+  stroke: black;
   stroke-width: 1px;
- } */
- /* path {
-  fill: rgb(133, 133, 133);
-  stroke: rgb(167, 167, 167);
+}
+
+.mapaDermatomasDetras a path {
+  fill: beige;
+  stroke: black;
   stroke-width: 1px;
- } */
- /* .mapadiv path:hover {
-     fill:rgb(0, 234, 255);
- } */
-/* path:hover {
-  fill:rgb(0, 234, 255);
-} */
+}
+
+.mapaDermatomasFrente a path.active {
+  fill: red;
+  stroke: green;
+  stroke-width: 1px;
+}
+
+.mapaDermatomasDetras a path.active {
+  fill: red;
+  stroke: green;
+  stroke-width: 1px;
+}

@@ -359,23 +359,23 @@ const routes: Routes = [
                 component: Subproceso1de3Component
               },
               {
-                path: 'subproceso2',
+                path: 'subproceso2/:id',
                 component: Subproceso2de3Component
               },
               {
-                path: 'subproceso3',
+                path: 'subproceso3/:id',
                 component: Subproceso3de3Component
               },
               {
-                path: 'subproceso4',
+                path: 'subproceso4/:id',
                 component: Subproceso4de3Component
               },
               {
-                path: 'subproceso5',
+                path: 'subproceso5/:id',
                 component: Subproceso5de3Component
               },
               {
-                path: 'subproceso6',
+                path: 'subproceso6/:id',
                 component: Subproceso6de3Component
               }
             ]
