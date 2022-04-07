@@ -214,28 +214,27 @@ export class Subproceso1de3Component implements OnInit {
     );
   }
 
-  unahistoria() {
-    const parametro1 = this.codigocliente;
-    const parametro2 = this.codigosolitario;
-    this.reservaService.getHistorial(parametro1, parametro2).subscribe(
-      hist => {
-        console.log(hist);
-        if (Object.entries(hist).length > 0) {
-          this.historial = hist;
-          this.toastr.info('el historial del paciente');
-        } else {
-          this.toastr.info('Aun no hay atenciones del cliente');
-        }
-      }, err => {
-        this.toastr.error('Error Api Historial');
-      }
-    );
-  }
+  // unahistoria() {
+  //   const parametro1 = this.codigocliente;
+  //   const parametro2 = this.codigosolitario;
+  //   this.reservaService.getHistorial(parametro1, parametro2).subscribe(
+  //     hist => {
+  //       console.log(hist);
+  //       if (Object.entries(hist).length > 0) {
+  //         this.historial = hist;
+  //         this.toastr.info('el historial del paciente');
+  //       } else {
+  //         this.toastr.info('Aun no hay atenciones del cliente');
+  //       }
+  //     }, err => {
+  //       this.toastr.error('Error Api Historial');
+  //     }
+  //   );
+  // }
 
-  historia(codigo) {
+  historia() {
     const parametro1 = this.codigocliente;
-    const parametro2 = codigo;
-    this.reservaService.getHistorial(parametro1, parametro2).subscribe(
+    this.reservaService.getHistorialDolor(parametro1).subscribe(
       hist => {
         console.log(hist);
         if (Object.entries(hist).length > 0) {

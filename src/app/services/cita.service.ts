@@ -41,6 +41,10 @@ export class CitaService {
     return this.http.get(`${this.apiUrlcita}/filtro/historial/${codigoclient}/${especialidad}`);
   }
 
+  getHistorialDolor(codigoclient: string | number) {
+    return this.http.get(`${this.apiUrlcita}/filtro/historiadolor/dolor/${codigoclient}`);
+  }
+
   getClientBooking(codigoclient: string) {
     return this.http.get(`${this.apiUrlcita}/search/client/${codigoclient}`);
   }
