@@ -248,13 +248,24 @@ export class Subproceso1de3Component implements OnInit {
       }
     );
   }
+  masdetalles(codigo) {
+    this.router.navigate(
+      [
+        'admin',
+        'procesos',
+        'proceso3',
+        'subproceso4',
+        codigo
+      ]
+    );
+  }
   editarhistoria(codigo) {
     this.router.navigate(
       [
         'admin',
         'procesos',
-        'proceso1',
-        'subproceso3',
+        'proceso3',
+        'subproceso4',
         codigo
       ]
     );

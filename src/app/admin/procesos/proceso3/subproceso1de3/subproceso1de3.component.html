@@ -213,94 +213,6 @@
               <hr>
               <div class="row justify-content-center">
                 <div class="col-12 p-1">
-                  <h2 class="text-center">
-                    EPISODIO ACTUAL
-                  </h2>
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    TE:
-                  </span>
-                  <br>
-                  {{item.SickTime}}
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    EA:
-                  </span>
-                  <br>
-                  {{item.CurrentEpisode}}
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    FI:
-                  </span>
-                  <br>
-                  {{item.StartWay}}
-                </div>
-              </div>
-              <hr>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
-                  <span>
-                    SS:
-                  </span>
-                  <br>
-                  {{item.SignsandSymptoms}}
-                </div>
-              </div>
-              <hr>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
-                  <span>
-                    DESCRIPCIÓN DEL PROBLEMA:
-                  </span>
-                  <br>
-                  {{item.DescriptionProblem}}
-                </div>
-              </div>
-              <hr>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
-                  <h2 class="text-center">
-                    ANTECEDENTES PRINCIPALES
-                  </h2>
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    QX:
-                  </span>
-                  <br>
-                  {{item.SurgicalHistory}}
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    MEDICOS:
-                  </span>
-                  <br>
-                  {{item.MedicalHistory}}
-                </div>
-                <div class="col-12 col-lg-4 p-1 text-center">
-                  <span>
-                    ALERGIAS:
-                  </span>
-                  <br>
-                  {{item.AllergicHistory}}
-                </div>
-              </div>
-              <hr>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
-                  <span>
-                    EXAMEN FÍSICO:
-                  </span>
-                  <br>
-                  {{item.PhysicalExam}}
-                </div>
-              </div>
-              <hr>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
                   <span>
                     DIAGNOSTICO:
                   </span>
@@ -308,20 +220,21 @@
                   {{item.Diagnosis}}
                 </div>
               </div>
-              <div class="row justify-content-center">
-                <div class="col-12 p-1">
-                  <span>
-                    EXAMENES DE LABORATORIO:
-                  </span>
-                  <br>
-                  {{item.LaboratoryExam}}
-                </div>
-              </div>
               <hr>
               <br>
-              <button type="submit" class="btn btn-primary" (click)="editarhistoria(item.id)">
-                Actualizar
-              </button>
+              <div class="row justify-content-between">
+                <div class="col-12 col-md-6 col-lg-4 p-2">
+                  <button type="submit" class="btn btn-primary" (click)="masdetalles(item.id)">
+                    Mas Detalles
+                  </button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2">
+                  <button type="submit" class="btn btn-primary" (click)="editarhistoria(item.id)">
+                    Actualizar
+                  </button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
