@@ -330,6 +330,10 @@ export class Subproceso2Component implements OnInit {
       }
     );
   }
+  etswey() {
+    const valor = !this.reserva.ETS;
+    this.reserva.ETS = valor;
+  }
   ngOnInit(): void {
     this.gettipos1();
     this.gettipos2();
@@ -389,11 +393,12 @@ export class Subproceso2Component implements OnInit {
           }
           this.edad = edad + ' años, ' + meses + ' meses y ' + dias + ' días';
           this.elcodigo = codigo;
+          console.log(this.elcodigo);
           this.toastr.success('historia del paciente');
           this.analisisService.getAnalisisCita(this.elcodigo).subscribe(
             resanalisis => {
               this.analisis = resanalisis;
-              console.log(resanalisis);
+              console.log(this.analisis);
               const array3: any = this.analisis;
               const seleccionados: any = [];
               for (const item of array3) {
@@ -434,6 +439,7 @@ export class Subproceso2Component implements OnInit {
 
   historial() {
     this.reserva.Condition = 'atendido';
+    console.log(this.reserva);
     this.reservaService.updateCita(this.elcodigo, this.reserva).subscribe(
       actualizacion => {
         this.mensaje = actualizacion;
