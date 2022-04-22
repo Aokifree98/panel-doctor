@@ -1,9 +1,16 @@
 import { Cita } from 'src/app/models/Cita';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ListCita } from 'src/app/models/listcita';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CitaService } from 'src/app/services/cita.service';
+import { AnalisisService } from 'src/app/services/analisis.service';
+import { LaboratoriodoscitaService } from 'src/app/services/laboratoriodoscita.service';
+import { TipoService } from 'src/app/services/tipo.service';
+import { TipodosService } from 'src/app/services/tipodos.service';
+import { Analisis } from 'src/app/models/analisis';
+import { ListLaboratoriocita } from 'src/app/models/listlaboratoriodoscita';
+import { Genero } from 'src/app/models/genero.model';
 
 @Component({
   selector: 'app-subproceso2',
@@ -36,6 +43,10 @@ export class Subproceso2Component implements OnInit {
     PhysicalExam: '',
     Diagnosis: '',
     LaboratoryExam: '',
+    Creatininevalue: '',
+    Urea: '',
+    ETS: false,
+    Specifyothers: '',
     AdminId: 0,
     ClienteId: 0,
     HorarioId: 0
@@ -65,6 +76,10 @@ export class Subproceso2Component implements OnInit {
     PhysicalExam: '',
     Diagnosis: '',
     LaboratoryExam: '',
+    Creatininevalue: '',
+    Urea: '',
+    ETS: false,
+    Specifyothers: '',
     AdminId: 0,
     ClienteId: 0,
     HorarioId: 0,
@@ -122,17 +137,202 @@ export class Subproceso2Component implements OnInit {
       }
     }
   };
+  genero: Genero [] = [
+    {
+      id: 1,
+      name: 'Izquierda'
+    },
+    {
+      id: 2,
+      name: 'Derecha'
+    },
+    {
+      id: 3,
+      name: 'Ambos'
+    }
+  ];
+  elanalisis: Analisis = {
+    id: 0,
+    Value: false,
+    Condition: '',
+    CitaId: 0,
+    LaboratorioId: 0
+  };
+  ellaboratorio: ListLaboratoriocita = {
+    id: 0,
+    Value: false,
+    Location: '',
+    Amount: '',
+    Condition: '',
+    CitaId: 0,
+    LaboratoriodosId: 0
+  };
   ticket: any = this.reservadetail;
   elcodigo;
   mensaje;
   edad;
+  name;
+  mostrar = false;
+  tipos1: any = [];
+  tipos2: any = [];
+  analisis: any = [];
+  rxtmrm: any = [];
+  analisisfiltrado: any = [];
+  rxtmrmfiltrado: any = [];
+  analisisseleccioanados: any = [];
+  rxtmrmseleccioanados: any = [];
   constructor(
     private router: Router,
     private toastr: ToastrService,
+    private tipoService: TipoService,
     private reservaService: CitaService,
+    private tipodosService: TipodosService,
     private activatedRoute: ActivatedRoute,
+    private analisisService: AnalisisService,
+    private laboratoriocitaService: LaboratoriodoscitaService
   ) { }
+  gettipos1() {
+    this.tipoService.getTipos().subscribe(
+      res => {
+        this.tipos1 = res;
+      }, err => {
+        this.toastr.error('Error get tipos 1');
+      }
+    );
+  }
+  gettipos2() {
+    this.tipodosService.getTipodoss().subscribe(
+      res => {
+        this.tipos2 = res;
+      }, err => {
+        this.toastr.error('Error get tipos 2');
+      }
+    );
+  }
+  selecttype1(par) {
+    const parametro =  par;
+    const array: any = this.analisis;
+    const array2: any = [];
+    for (const item of array) {
+      const valor = item.laboratorio.TipoId;
+      if (valor === parametro) {
+        array2.push(item);
+        this.analisisfiltrado = array2;
+      }
+    }
+    console.log(this.analisisfiltrado);
+  }
+  selecttype2(par, par2) {
+    this.name = par2;
+    const parametro =  par;
+    if (parametro === 1) {
+      this.mostrar = true;
+    } else {
+      this.mostrar = false;
+    }
+    const array: any = this.rxtmrm;
+    const array2: any = [];
+    for (const item of array) {
+      const valor = item.laboratoriodos.TipodosId;
+      if (valor === parametro) {
+        array2.push(item);
+        this.rxtmrmfiltrado = array2;
+      }
+    }
+    console.log(this.rxtmrmfiltrado);
+  }
+  onchangeselect1(par) {
+    this.analisisService.getAnalisis(par).subscribe(
+      resget => {
+        this.elanalisis = resget;
+        const valor = !this.elanalisis.Value;
+        if (valor === true) {
+          this.elanalisis.Condition = 'obtener';
+        } else {
+          this.elanalisis.Condition = 'asignado';
+        }
+        // tslint:disable-next-line: no-unused-expression
+        this.elanalisis.Value = valor;
+        this.analisisService.updateAnalisis(par, this.elanalisis).subscribe(
+          resupdate => {
+            this.mensaje = resupdate;
+            this.analisisService.getAnalisisCita(this.elcodigo).subscribe(
+              resanalisis => {
+                this.analisis = resanalisis;
+                console.log(resanalisis);
+                const array3: any = this.analisis;
+                const seleccionados: any = [];
+                for (const item of array3) {
+                  if (item.Value === true) {
+                    seleccionados.push(item);
+                    this.analisisseleccioanados = seleccionados;
+                  }
+                }
+                console.log(this.analisisseleccioanados);
+              }, err => {
+                this.toastr.error('Error get all analisis cita');
+              }
+            );
+          }, err => {
+            this.toastr.error('Error update one analisis cita');
+          }
+        );
+      }, err => {
+        this.toastr.error('Error get one analisis cita');
+      }
+    );
+  }
+  onchangeselect2(par) {
+    this.laboratoriocitaService.getLaboratoriocita(par).subscribe(
+      resget => {
+        this.ellaboratorio = resget;
+        const valor = !this.ellaboratorio.Value;
+        if (valor === true) {
+          this.ellaboratorio.Condition = 'obtener';
+        } else {
+          this.ellaboratorio.Condition = 'asignado';
+        }
+        // tslint:disable-next-line: no-unused-expression
+        this.ellaboratorio.Value = valor;
+      }, err => {
+        this.toastr.error('Error get one rxtmrm cita');
+      }
+    );
+  }
+  onOptionsSelected(event) {
+    const value = event.target.value;
+    this.ellaboratorio.Location = value;
+    console.log(value);
+  }
+  updaterxtmrm(par) {
+    this.laboratoriocitaService.updateLaboratoriocita(par, this.ellaboratorio).subscribe(
+      resupdate => {
+        this.mensaje = resupdate;
+        this.laboratoriocitaService.getLaboratoriocitaCita(this.elcodigo).subscribe(
+          reslaboratorio => {
+            this.analisis = reslaboratorio;
+            console.log(reslaboratorio);
+            const array4: any = this.rxtmrm;
+            const seleccionados: any = [];
+            for (const item of array4) {
+              if (item.Value === true) {
+                seleccionados.push(item);
+                this.rxtmrmseleccioanados = seleccionados;
+              }
+            }
+            console.log(this.rxtmrmseleccioanados);
+          }, err => {
+            this.toastr.error('Error get all analisis rx-tm-rm');
+          }
+        );
+      }, err => {
+        this.toastr.error('Error update one rxtmrm cita');
+      }
+    );
+  }
   ngOnInit(): void {
+    this.gettipos1();
+    this.gettipos2();
     const FechaActual = new Date();
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
@@ -189,7 +389,41 @@ export class Subproceso2Component implements OnInit {
           }
           this.edad = edad + ' años, ' + meses + ' meses y ' + dias + ' días';
           this.elcodigo = codigo;
-          this.toastr.success('su boleta');
+          this.toastr.success('historia del paciente');
+          this.analisisService.getAnalisisCita(this.elcodigo).subscribe(
+            resanalisis => {
+              this.analisis = resanalisis;
+              console.log(resanalisis);
+              const array3: any = this.analisis;
+              const seleccionados: any = [];
+              for (const item of array3) {
+                if (item.Value === true) {
+                  seleccionados.push(item);
+                  this.analisisseleccioanados = seleccionados;
+                }
+              }
+              console.log(this.analisisseleccioanados);
+            }, err => {
+              this.toastr.error('Error get all analisis cita');
+            }
+          );
+          this.laboratoriocitaService.getLaboratoriocitaCita(this.elcodigo).subscribe(
+            reslaboratorio => {
+              this.rxtmrm = reslaboratorio;
+              console.log(reslaboratorio);
+              const array4: any = this.rxtmrm;
+              const seleccionados: any = [];
+              for (const item of array4) {
+                if (item.Value === true) {
+                  seleccionados.push(item);
+                  this.rxtmrmseleccioanados = seleccionados;
+                }
+              }
+              console.log(this.rxtmrmseleccioanados);
+            }, err => {
+              this.toastr.error('Error get all analisis rx-tm-rm');
+            }
+          );
         },
         err => {
           console.log(err);
@@ -197,6 +431,7 @@ export class Subproceso2Component implements OnInit {
       );
     }
   }
+
   historial() {
     this.reserva.Condition = 'atendido';
     this.reservaService.updateCita(this.elcodigo, this.reserva).subscribe(

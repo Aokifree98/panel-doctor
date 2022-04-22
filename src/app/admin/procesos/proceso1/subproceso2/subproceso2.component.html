@@ -330,7 +330,19 @@
                     <label>
                       EXAMENES DE LABORATORIO:
                     </label>
-                    <textarea
+                    <div class="row">
+                      <div class="col-12 col-lg-6 p-2">
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalAnalisis">
+                          Analisis
+                        </button>
+                      </div>
+                      <div class="col-12 col-lg-6 p-2">
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalLaboratorio">
+                          Rx - Tm - RM
+                        </button>
+                      </div>
+                    </div>
+                    <!-- <textarea
                       name="reserva.LaboratoryExam"
                       [(ngModel)]="reserva.LaboratoryExam"
                       type="text"
@@ -338,7 +350,7 @@
                       required minlength="3"
                       tabindex="11"
                       placeholder="........."
-                      cols="30" rows="10"></textarea>
+                      cols="30" rows="10"></textarea> -->
                   </div>
                 </div>
               </div>
@@ -348,6 +360,187 @@
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Analisis -->
+<div class="modal fade" id="ModalAnalisis" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
+          Analisis
+        </h5>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-lg-4 p-2">
+            <h2>
+              Tipos:
+            </h2>
+            <div class="row">
+              <div class="col-12 col-lg-6 p-1" *ngFor="let obj of tipos1">
+                <button type="submit" class="btn btn-primary" (click)="selecttype1(obj.id)">
+                  {{obj.Name}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 p-2">
+            <h3>
+              Examenes de laboratorio:
+            </h3>
+            <div class="col-12col-lg-6 col-xl-4 p-2" *ngFor="let item of analisisfiltrado">
+              <label class="form-check-label bmd-label-static">
+                <input class="form-check-input" type="checkbox" value="true" (change)="onchangeselect1(item.id)">
+                {{item.labratorio.Name}}
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 p-2">
+            <h3>
+              Seleccionados:
+            </h3>
+            <div class="row">
+              <div class="col-12 p-1" *ngFor="let item of analisisseleccioanados">
+                <p>
+                  {{item.labratorio.Name}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Laboratorio -->
+<div class="modal fade" id="ModalLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">
+          Rayos X - Tomografia - Resonancia Magnetica
+        </h5>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-lg-3 p-1">
+            <h2>
+              Tipos:
+            </h2>
+            <div class="row">
+              <div class="col-12 col-lg-6 p-1" *ngFor="let obj of tipos2">
+                <button type="submit" class="btn btn-primary" (click)="selecttype2(obj.id, obj.Name)">
+                  {{obj.Name}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 p-1">
+            <h3>
+              {{name}}:
+            </h3>
+            <div class="col-12col-lg-6 col-xl-4 p-2" *ngFor="let item of rxtmrmfiltrado">
+              <label class="form-check-label bmd-label-static">
+                <input class="form-check-input" type="checkbox" value="true" (change)="onchangeselect2(item.id)">
+                {{item.laboratoriodos.Name}}
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 p-1">
+            <div *ngIf="mostrar">
+              <form>
+                <div class="row">
+                  <div class="col-12 p-1">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">
+                        Lugar
+                      </label>
+                      <br>
+                      <select (change)='onOptionsSelected($event)'
+                        id="select-type-basic"
+                        class="form-control"
+                        [(ngModel)]="ellaboratorio.Location"
+                        name="ellaboratorio.Location"
+                        required>
+                        <option selected value="">
+                          Seleccione Lugar
+                        </option>
+                        <option [value]="obj.name" *ngFor="let obj of genero">
+                        {{obj.name}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 p-1">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">
+                        Cantidad
+                      </label>
+                      <input name="ellaboratorio.Amount"
+                      [(ngModel)]="ellaboratorio.Amount"
+                      onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                      required minlength="8"
+                      placeholder="........."
+                      type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-12 p-1">
+                    <button (click)="updaterxtmrm(ellaboratorio.id)" type="submit" class="btn btn-primary pull-right"
+                      [disabled]="(ellaboratorio.Location === '' &&  ellaboratorio.Amount === '')? true:false">
+                      Actualizar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 p-1">
+            <h3>
+              Seleccionados:
+            </h3>
+            <div class="row">
+              <div class="col-12 p-1" *ngFor="let item of rxtmrmseleccioanados">
+                <p>
+                  {{item.laboratoriodos.Name}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
