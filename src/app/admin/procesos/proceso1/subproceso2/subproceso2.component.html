@@ -383,8 +383,8 @@
             </h3>
           </div>
         </div>
-        <div class="row">
-          <div class="col-6 p-2" *ngFor="let item of analisisfiltrado">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 offset-lg-1 p-2" *ngFor="let item of analisisfiltrado">
             <label class="form-check-label bmd-label-static">
               <!-- <input class="form-check-input" type="checkbox" value="true" (change)="onchangeselect1(item.id)"> -->
               <input class="form-check-input" type="checkbox" [ngModel]="item.Value" [value]="item.Value" (change)="onchangeselect1(item.id)">
@@ -402,8 +402,8 @@
             </h3>
           </div>
         </div>
-        <div class="row">
-          <div class="col" *ngFor="let item of analisisseleccioanados">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 m-2 borde" *ngFor="let item of analisisseleccioanados">
             <p>
               {{item.laboratorio.Name}}
             </p>
@@ -466,11 +466,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 p-4">
+          <div class="col">
             <h3>
               {{name}}:
             </h3>
-            <div class="col-12 col-lg-6 col-xl-4 p-2" *ngFor="let item of rxtmrmfiltrado">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-5 offset-1 p-2" *ngFor="let item of rxtmrmfiltrado">
               <label class="form-check-label bmd-label-static">
                 <input class="form-check-input" type="checkbox" [ngModel]="item.Value" [value]="item.Value" (change)="onchangeselect2(item.id)">
                 {{item.laboratoriodos.Name}}
@@ -479,10 +482,9 @@
                 </span>
               </label>
             </div>
-          </div>
         </div>
         <div class="row">
-          <div class="col-12 p-4">
+          <div class="col-12 p-2">
             <div *ngIf="mostrar">
               <form>
                 <div class="row">
@@ -532,12 +534,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 p-4">
+          <div class="col-12 p-2">
             <h3>
               Seleccionados:
             </h3>
-            <div class="row">
-              <div class="col-12 p-1" *ngFor="let item of rxtmrmseleccioanados">
+            <div class="row justify-content-center">
+              <div class="col-lg-5 m-2 borde" *ngFor="let item of rxtmrmseleccioanados">
                 <p>
                   {{item.laboratoriodos.Name}}
                 </p>
