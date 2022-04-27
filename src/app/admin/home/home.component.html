@@ -155,3 +155,282 @@
     </div>
   </div>
 </div>
+<div class="row">
+  
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".ModalEntrevista-lg">
+    Entrevista Cliente
+  </button>
+
+<!-- Modal -->
+  <div class="modal fade ModalEntrevista-lg" id="ModalEntrevista" tabindex="-1" role="dialog" aria-labelledby="ModalEntrevistaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalEntrevistaLabel">Entrevista con el Paciente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row justify-content-center bg-light">
+              <div class="col-lg-6">
+                <label class="bmd-label-primary"><h3>ENTREVISTA CON EL PACIENTE</h3></label>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-lg-12">
+                <h4 class="text-center text-primary">PREGUNTA 1: ¿Tiene el dolor una o más de las siguientes características?</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 offset-1">
+                <label>Comezón: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="OpcionesComezon" id="radioComezon1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="OpcionesComezon" id="radioComezon2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <label>Sensasión de frio doloroso: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesSFDoloroso" id="radioSFDoloroso1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesSFDoloroso" id="radioSFDoloroso2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <label>Descargas eléctricas: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesDElectricas" id="radioDElectricas1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesDElectricas" id="radioDElectricas2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-lg-12">
+                <h4 class="text-center text-primary">PREGUNTA 2: ¿Se asocia el dolor con uno o más de los siguiente síntomas en la misma zona?</h4>
+              </div>
+            </div>
+            <div class="row ml-4">
+              <div class="col-lg-3">
+                <label>Hormigueo: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="hormigueoOpciones" id="radioHormigueo1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="hormigueoOpciones" id="radioHormigueo2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <label>Sensasión de alfileres y agujas: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesSAA" id="radioSAA1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesSAA" id="radioSAA2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <label>Entumecimiento: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesEntumecimiento" id="radioEntumecimiento1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesEntumecimiento" id="radioEntumecimiento2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <label>Picazón: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesPicazon" id="radioPicazon1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesPicazon" id="radioPicazon2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center bg-light">
+              <div class="col-lg-5">
+                <label class="bmd-label-primary"><h3>EXAMEN DEL PACIENTE</h3></label>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-lg-12">
+                <h4 class="text-center text-primary">¿Está el dolor localizado en una zona donde el examen físico puede mostrar una o más de las siguientes características?</h4>
+              </div>
+            </div>
+            <div class="row justify-content-around">
+              <div class="col-lg-4">
+                <label>Hipoestesia al tacto: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesHipoestesiaTacto" id="radioHipoestesiaTacto1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesHipoestesiaTacto" id="radioHipoestesiaTacto2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <label>Hipoestesia a los pinchazos: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesHipoestesiaPinchazo" id="radioHipoestesiaPinchazo1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesHipoestesiaPinchazo" id="radioHipoestesiaPinchazo2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-lg-12">
+                <h4 class="text-center text-primary">En la zona dolorosa, el dolor puede ser causado o incrementado por:</h4>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-3">
+                <label>Cepillado: </label><br>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesCepillado" id="radioCepillado1" value="option1"> Si
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="opcionesCepillado" id="radioCepillado2" value="option2"> No
+                    <span class="circle">
+                        <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center bg-light">
+              <div class="col-lg-2">
+                <label class="bmd-label-primary"><h3>RESULTADO</h3></label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-lg-4 offset-1">
+            <div class="form-group">
+              <label for="fechaEntrevista" class="bmd-label-static">Fecha:</label>
+              <input type="date" class="form-control" id="fechaEntrevista">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label class="bmd-label-primary">PUNTOS TOTALES: </label><br>
+            <output></output>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
